@@ -1,0 +1,43 @@
+
+<div class="query-wrap" ng-controller="dataQueryCtrl">
+	<div class="tablist-details">
+		<div class="position-relative">
+			
+			<div class="tablist-bar">
+				<div class="tablist-search">
+					
+					<div class="display-iblock hand-border input-padding input-h input-w input-search">
+						<input class="hand-input" placeholder="请输入关键字" ng-model="searchKey" ng-keyup="myKeyup($event)"/>
+						<fun-Icon id="msnui-find" ng-click="dataSearch()" class="search-icon"></fun-Icon>
+					</div>
+				</div>
+			</div>
+			<table ng-table="tableParams" class="table table-striped tablist">
+						<thead>
+						<tr>
+							<th class="tablist">
+								<!--<span class="checkBox file-checkbox"><input type="checkbox" class="input_check" id="checkAll"   ng-model="isSelectAll" ng-click="selectAll(isSelectAll)"><label for="checkAll"></label></span>-->
+								名称
+							</th>
+							<th>描述</th>
+							<!--<th>创建时间</th>-->
+							<th>所属用户</th>
+							<th>操作</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr ng-repeat="item in queryData">
+							<td ng-bind="item.srcName" >
+							<!--	<span class="checkBox file-checkbox"><input type="checkbox" class="input_check" id="{{'check'+$index}}" ng-model="selected[$index]"><label for="{{'check'+$index}}"></label></span>-->
+							</td>
+							<td ng-bind="item.dbType" ></td>
+							<td ng-bind="item.dbUrl"></td>
+							<td>
+								<fun-Icon id="gengduo" ng-click="editDataQuery(item)" ></fun-Icon>&nbsp;&nbsp;
+							</td>
+						</tr>
+						</tbody>
+					</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,78 @@
+<dialog-Template>
+	<div class="tablist-bar mb15">
+			<div class="tablist-search col-xs-12">
+				<div class="display-iblock hand-border input-padding input-h input-w100 input-search">
+					<input class="hand-input" placeholder="请查询" ng-model="query" ng-change="changeQuery(query)" fun-Keyboard="{method:'dataSearch'}" ng-keyup="myKeyup($event)" />
+					<fun-Icon id="msnui-find" ng-click="dataSearch()" class="search-icon"></fun-Icon>
+				</div>
+			</div>
+		</div>
+		
+	<div class="optsLeft">
+		<table ng-table="tableParams" class="table table-striped tablist">
+			<thead>
+				<tr>
+					<th>
+						<span class="checkBox file-checkbox">
+							<input type="checkbox" class="input_check" id="checkAlluserManage" ng-model="isSelectAll" ng-click="selectAll(isSelectAll)">
+							<label for="checkAlluserManage"></label>
+					</span>
+					</th>
+					<th>全选</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in optsData" ng-if="item.optSelected!=3">
+					<td style="width: 80px;">
+						<span class="checkBox file-checkbox">
+								<input type="checkbox" class="input_check" id="{{'check'+item.selectV}}"  ng-model="selected[item.selectV]" ng-click="changSelect($index)" >
+								<label for="{{'check'+item.selectV}}"></label>
+							</span>
+					</td>
+					<td ng-bind="item.selectV"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="optRight mb10">
+		<div class="div_height">
+			<div class="cursor-pointer fr btn-border btn-white" ng-class="{'optBg':editCode==0}" ng-click="listClick(0)">
+				<span>列表</span>
+			</div>
+			<div class="cursor-pointer fr btn-border btn-white mr10" ng-class="{'optBg':editCode==1}" ng-click="editClick(1)">
+				<span>编辑</span>
+			</div>
+		</div>
+
+		<div ng-if="editCode==0">
+			<table ng-table="tableParams" class="table table-striped tablist" ng-if="optRightData.length!=0">
+				<thead>
+					<tr>
+						<th>
+							<span class="checkBox file-checkbox">
+						<input type="checkbox" class="input_check" id="checkAllRightOpts" ng-model="isSelectRightAll" >
+						<!--<label for="checkAllRightOpts"></label>-->
+							<fun-Icon id="shanchu" for="checkAllRightOpts" ng-click="selectRightAll()"></fun-Icon>
+					</span>
+						</th>
+						<th>全选</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in optRightData" >
+						<td style="width: 80px;">
+							<span class="checkBox file-checkbox"><input type="checkbox" class="input_check" id="{{'check'+item}}" ng-model="selected[item]" >
+					<fun-Icon id="shanchu" for="{{'check'+item}}" ng-click="deleteSelect($index)"></fun-Icon>
+					</span>
+						</td>
+						<td ng-bind="item.selectV"></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<span ng-if="optRightData.length==0" class="no_data">空</span>
+		</div>
+		<textarea class="mt10 col-sm-12" ng-if="editCode==1" ng-model="selectString" ng-change="changeText(selectString)"></textarea>
+	</div>
+</dialog-Template>

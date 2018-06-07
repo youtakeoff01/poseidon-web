@@ -1,0 +1,64 @@
+<dialog-Template>
+	<div class="add-wrap">
+
+		<div class="mb10">
+			<div class="dialog-text">
+				<span class="must-before">渠道名称：</span></div>
+			<input class="form-control dialog-input" ng-model="datetoBehind.channelName" disabled="" />
+
+		</div>
+		<div class="mb10">
+			<div class="dialog-text ">
+				<span class="must-before">渠道类型：</span></div>
+			<select class="form-control dialog-input" placeholder="--请选择--" ng-model="datetoBehind.channelType">
+				<option>EMAIL</option>
+			</select>
+			<!--<ui-select class="dialog-input" ng-model="datetoBehind.channelType" ng-change="selectQuery()">
+				<ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+				<ui-select-choices repeat="item in ditchType | filter: $select.search">
+					<span ng-bind-html="item.name | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>-->
+			<!--<input class="form-control dialog-input" ng-model="datetoBehind.channelType" />-->
+		</div>
+
+		<div class="line position-relative"></div>
+
+		<div class="mb10">
+			<div class="dialog-text ">
+				<span class="must-before">收信账号：</span></div>
+			<input class="form-control dialog-input" ng-model="datetoBehind.receiveAcount" placeholder="多个账号请用英文分隔符分开;" />
+		</div>
+
+		<div class="mb10">
+			<div class="dialog-text ">
+				<span class="must-before">发信服务器：</span></div>
+			<input class="form-control dialog-input" ng-model="datetoBehind.sendServer" />
+		</div>
+		<div class="mb10">
+			<div class="dialog-text ">
+				<span class="must-before">端口：</span></div>
+			<input class="form-control dialog-port" ng-model="datetoBehind.port" />
+
+			<div class="dialog-port">
+				 <input type="checkbox" ng-checked="{{create}}" ng-model="create" ng-click="clickSSL()">
+				<!--<label class="i-checks">
+
+               <input type="checkbox" ng-checked="{{create}}" ng-model="create" ng-click="clickSSL()"><i></i>
+             </label>-->
+				<span class="fz-14">使用安全链接</span>
+			</div>
+
+		</div>
+		<div class="mb10">
+			<div class="dialog-text ">
+				<span class="must-before">账号：</span></div>
+			<input class="form-control dialog-input" ng-model="datetoBehind.sendAccount" />
+		</div>
+		<div class="mb10">
+			<div class="dialog-text ">
+				<span class="must-before">密码：</span></div>
+			<input class="form-control dialog-input" type="password" ng-model="datetoBehind.emailPassword" />
+		</div>
+	</div>
+</dialog-Template>

@@ -1,0 +1,59 @@
+<dialog-Template>
+	<div class="add-wrap">
+
+		<div class="mb10">
+			<div class="dialog-text">
+				<span class="must-before">渠道名称：</span></div>
+			<input class="form-control dialog-input" ng-model="addDitchInfo.channelName" ng-blur="searchChannelName()" />
+
+		</div>
+		<div class="mb10">
+			<div class="dialog-text ">
+				<span class="must-before">渠道类型：</span></div>
+			<ui-select class="dialog-input" ng-model="addDitchInfo.channelType" ng-change="selectQuery()">
+				<ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+				<ui-select-choices repeat="item in ditchType | filter: $select.search">
+					<span ng-bind-html="item.name | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+			<!--<input class="form-control dialog-input" ng-model="addDitchInfo.channelType" />-->
+		</div>
+
+		<div class="line position-relative"></div>
+
+		<div class="mb10">
+			<div class="dialog-text ">
+				<span class="must-before">收信账号：</span></div>
+			<input class="form-control dialog-input" ng-model="addDitchInfo.receiveAcount" placeholder="多个账号请用英文分隔符分开;" />
+		</div>
+
+		<div class="mb10">
+			<div class="dialog-text ">
+				<span class="must-before">发信服务器：</span></div>
+			<input class="form-control dialog-input" ng-model="addDitchInfo.sendServer" />
+		</div>
+		<div class="mb10">
+			<div class="dialog-text ">
+				<span class="must-before">端口：</span></div>
+			<input class="form-control dialog-port" ng-model="addDitchInfo.port" />
+
+			<div class="dialog-port">
+				<label class="i-checks">
+               <input type="checkbox" ng-true-value="true" ng-false-value="false" ng-model="addDitchInfo.booean_ssl"><i></i>
+             </label>
+				<span class="fz-14">使用安全链接</span>
+			</div>
+
+		</div>
+		<div class="mb10">
+			<div class="dialog-text ">
+				<span class="must-before">账号：</span></div>
+			<input class="form-control dialog-input" ng-model="addDitchInfo.sendAccount" />
+		</div>
+		<div class="mb10">
+			<div class="dialog-text ">
+				<span class="must-before">密码：</span></div>
+			<input class="form-control dialog-input" type="password" ng-model="addDitchInfo.emailPassword" />
+		</div>
+	</div>
+</dialog-Template>

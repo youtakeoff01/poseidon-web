@@ -1,0 +1,44 @@
+<form class="content"  ng-controller="syncStepFourCtrl">
+    <div class="mb15">
+
+        <table class="table table-bordered dataSourceTable">
+            <thead>
+                <tr>
+                    <th colspan="2">数据源</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>字段</td>
+                    <td>数据类型</td>
+                </tr>
+                <tr ng-repeat="file in sendFile | orderBy:'id'">
+                    <td>{{file.id}}</td>
+                    <td>&nbsp&nbsp&nbsp{{file.name}}&nbsp&nbsp&nbsp</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-bordered syncSourceTable">
+            <thead>
+            <tr>
+                <th colspan="2">目标源</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>字段</td>
+                <td>数据类型</td>
+            </tr>
+            <tr ng-repeat="file in fileMapData | orderBy:'id'">
+                <td>{{file.id}}</td>
+                <td>&nbsp{{file.name}}&nbsp</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+	<div class="mb15">
+		<input type="submit" class="previous-step  dialog-ok page-ml-m " wz-previous value="上一步" />
+		<input class="next-step  dialog-ok  form-control " type="submit" wz-next value="下一步"  />
+	</div>
+</form>

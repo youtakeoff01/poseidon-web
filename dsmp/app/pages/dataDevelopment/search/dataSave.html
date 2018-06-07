@@ -1,0 +1,60 @@
+<dialog-Template>
+    <div class="mb15">
+        <div class="dialog-text ">
+            <span class="must-before">任务名称：</span></div>
+        <input class="form-control dialog-input" type="text" ng-model="saveData.name" ng-blur="checkName(saveData.name)"/>
+    </div>
+
+    <div class="mb15">
+        <div class="dialog-text ">
+            <span>任务依赖：</span></div>
+        <ui-select class="dialog-input" ng-model="saveData.relyData">
+            <ui-select-match placeholder="请选择">{{$select.selected.taskName}}</ui-select-match>
+            <ui-select-choices repeat="item in relyOnData | filter: $select.search">
+                <span ng-bind-html="item.taskName | highlight: $select.search"></span>
+            </ui-select-choices>
+    </div>
+
+   <!--  <div class="mb15">
+        <div class="dialog-text ">
+            <span class="must-before">数据源：</span></div>
+        <ui-select class="dialog-input" ng-model="saveData.dataSource"  ng-change="getTarget()">
+            <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+            <ui-select-choices repeat="item in dataSourceData | filter: $select.search">
+                <span ng-bind-html="item.name | highlight: $select.search"></span>
+            </ui-select-choices>
+    </div>
+
+    <div class="mb15">
+        <div class="dialog-text ">
+            <span class="must-before">目标表：</span></div>
+        <ui-select class="dialog-input" ng-model="saveData.targetTable"  ng-change="getPartition()">
+            <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+            <ui-select-choices repeat="item in targetData | filter: $select.search">
+                <span ng-bind-html="item.name | highlight: $select.search"></span>
+            </ui-select-choices>
+    </div>
+
+    <div class="mb15">
+        <div class="dialog-text "><span>是否分区：</span></div>
+        <div class="checkboxDiv">
+            <input type="radio" value="0" ng-model="partition" ng-click="changepart(partition)" />
+            <span class="paadingall">是</span>
+            <input type="radio" value="1" ng-model="partition" ng-click="changepart(partition)" />
+            <span class="paadingall">否</span>
+        </div>
+    </div> -->
+
+    <div class="mb15" ng-show="partition==0">
+        <div class="dialog-text">
+            <span>分区字段：</span></div>
+        <ui-select class="dialog-input" ng-model="saveData.partitionText"  >
+            <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+            <ui-select-choices repeat="item in partitionData | filter: $select.search">
+                <span ng-bind-html="item.name | highlight: $select.search"></span>
+            </ui-select-choices>
+    </div>
+    <div class="mb15">
+       <textarea style="width: 100%;height: 100px;" ng-model="saveData.sqlText"></textarea>
+    </div>
+</dialog-Template>

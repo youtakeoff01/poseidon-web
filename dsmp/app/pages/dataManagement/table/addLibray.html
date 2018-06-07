@@ -1,0 +1,24 @@
+<dialog-Template>
+    <ng-form class="add-wrap">
+       
+        <div class="mb15">
+            <div class="dialog-text">
+                <span class="must-before">库名：</span>
+            </div>
+            <!--<input class="form-control dialog-input" ng-model="addTabInfo.dbName"  />-->
+            <ng-form name="liaNameForm">
+                <input class="form-control dialog-input"
+                    name="liaName" 
+                    ng-model="addliaInfo.tabelName"
+                    ng-blur="seachLiaName(addliaInfo.tabelName)"
+                    ng-pattern="/^[a-zA-Z][\w]*$/" 
+                    required/>
+            </ng-form>
+        </div>
+
+        <!-- <div class="mb20">
+            <div class="dialog-text "><span class="must-before">描述信息：</span></div>
+            <textarea class="form-control dialog-textarea" ng-model="addliaInfo.metaDesc"></textarea>
+        </div> -->
+    </div>
+</dialog-Template>

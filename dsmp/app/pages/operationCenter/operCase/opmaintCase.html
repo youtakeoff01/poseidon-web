@@ -1,0 +1,13 @@
+
+<!--任务管理页面-->
+<div ng-controller="opmaintCaseCtrl" class="query-wrap sync-wrap">
+    <ul class="text-tab">
+        <li ng-click="refresh(1)" ng-class="{'text-choosed':executionShow==1}">运行中</li>
+        <li ng-click="refresh(2)" ng-class="{'text-choosed':executionShow==2}">完成状态</li>
+   
+    </ul>
+    <div ng-include="'app/pages/operationCenter/operCase/inService.html'" ng-show='executionShow==1'></div>
+    <div ng-include="'app/pages/operationCenter/operCase/completedState.html'" ng-show='executionShow==2'></div>
+   
+   
+</div>

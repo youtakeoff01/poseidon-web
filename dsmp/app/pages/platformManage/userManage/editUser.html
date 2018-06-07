@@ -1,0 +1,60 @@
+<dialog-Template>
+	<div class="addCategory-wrap">
+		<div class="mb10">
+			<div class="dialog-text " ng-model="editUserData.id"> <span class="must-before">账号：</span></div>
+			<input class="form-control dialog-input" ng-model="editUserData.userName" disabled="" />
+		</div>
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">E-mail：</span></div>
+			<input class="form-control dialog-input" ng-model="editUserData.email" required/>
+		</div>
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">用户类别：</span></div>
+			<input type="text" class="form-control dialog-input" ng-model="editUserData.userType" disabled>
+		</div>
+		<!--<div class="mb10">-->
+			<!--<div class="dialog-text "><span class="must-before">密码：</span></div>-->
+			<!--<input class="form-control dialog-input" type="password" ng-model="editUserData.password" />-->
+		<!--</div>-->
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">姓名：</span></div>
+			<input class="form-control dialog-input" ng-model="editUserData.realName" />
+		</div>
+		<div class="mb10">
+			<!-- 目前注释掉用户组 -->
+			<!-- <div class="dialog-text "><span class="must-before">用户组：</span></div>
+		
+			<ui-select class="dialog-input" ng-model="editUserData.group" ng-change="selectQuery()">
+				<ui-select-match placeholder="请选择">{{$select.selected.groupName}}</ui-select-match>
+				<ui-select-choices repeat="item in userListData | filter: $select.search">
+					<span ng-bind-html="item.groupName | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select> -->
+		</div>
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">用户角色：</span></div>
+			<ui-select class="dialog-input" ng-model="editUserData.role" ng-change="selectQuery()">
+				<ui-select-match placeholder="请选择">{{$select.selected.roleName}}</ui-select-match>
+				<ui-select-choices repeat="item in roleListData | filter: $select.search">
+					<span ng-bind-html="item.roleName | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+		</div>
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">用户状态：</span></div>
+			<ui-select ng-model="editUserData.statusName" class="dialog-input" theme="bootstrap">
+				<ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+				<ui-select-choices repeat="item in userState | filter: $select.search">
+					<span ng-bind-html="item.name | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+			<!-- <select class="form-control dialog-input" placeholder="--请选择--" ng-model="editUserData.statusName">
+				<option>可用</option>
+				<option>禁用</option>
+				<option>删除</option>
+			</select> -->
+			<!--<input class="form-control dialog-input" ng-model="editUserData.status" />-->
+		</div>
+		
+	</div>
+</dialog-Template>

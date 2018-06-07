@@ -1,0 +1,368 @@
+a:active,
+a:hover,
+a:focus {
+    outline: none;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    border: 1px solid #CCC!important;
+}
+label{
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 0px !important;
+    font-weight: inherit !important;
+}
+.no-select {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.must-before {
+    position: relative;
+}
+
+.must-before:before {
+    content: "*";
+    color: #F56461;
+    position: absolute;
+    left: -10px;
+    top: -2px;
+}
+
+.must-after {
+    position: relative;
+}
+
+.must-after:after {
+    content: "*";
+    color: #F56461;
+    position: absolute;
+    right: -8px;
+    top: -2px;
+}
+
+.color008 {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.w100 {
+    width: 100px;
+}
+
+.w150 {
+    width: 150px;
+}
+
+.w500 {
+    width: 500px;
+}
+
+.hand-btn {
+    border: none;
+    color: #FFFFFF;
+    border-radius: 2px;
+}
+
+.btn-add,
+.btn-add:hover,
+.btn-add:focus {
+    color: #5ECEEF;
+}
+
+.btn-ok,
+.btn-ok:hover,
+.btn-ok:focus {
+    background-color: #64AADD;
+}
+
+.btn-delete,
+.btn-delete:hover,
+.btn-delete:focus {
+    color: #5ECEEF;
+}
+
+.btn-cancel,
+.btn-cancel:hover,
+.btn-cancel:focus {
+    background-color: #B6B7B9;
+}
+
+.btn-warn,
+.btn-warn:hover,
+.btn-warn:focus {
+    background-color: #E85335;
+}
+
+.btn-add+.btn-delete {
+    margin-right: 10px;
+}
+
+.hand-input {
+    border: none;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+    width: 100%;
+}
+
+.hand-border {
+    border: 1px solid #DDDDDD;
+    border-radius: 2px;
+}
+
+.mt5 {
+    margin-top: 5px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mr10 {
+    margin-right: 10px;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
+
+.ml10 {
+    margin-left: 10px;
+}
+
+.mt15 {
+    margin-top: 15px;
+}
+
+.mr15 {
+    margin-right: 15px;
+}
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.ml15 {
+    margin-left: 15px;
+}
+
+.pd10 {
+    padding: 10px;
+}
+
+.pt15 {
+    padding-top: 15px;
+}
+
+.pr15 {
+    padding-right: 15px;
+}
+
+.pb15 {
+    padding-bottom: 15px;
+}
+
+.pl15 {
+    padding-left: 15px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mr20 {
+    margin-right: 20px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.ml20 {
+    margin-left: 20px;
+}
+
+.pt20 {
+    padding-top: 20px;
+}
+
+.pr20 {
+    padding-right: 20px;
+}
+
+.pb20 {
+    padding-bottom: 20px;
+}
+
+.pl20 {
+    padding-left: 20px;
+}
+
+.ml30 {
+    margin-left: 30px;
+}
+
+.tablist-details {
+    background-color: #FFFFFF;
+    padding: 10px 10px 60px 10px;
+}
+
+.tablist svg {
+    width: 25px;
+}
+
+.tablist-bar {
+    border-bottom: 1px dotted #DDDDDD;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.tablist-search {
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.tablist th {
+    text-align: left !important;
+    border: none !important;
+    font-weight: bold;
+    padding-bottom: 10px !important;
+}
+
+.tablist tbody tr:hover {
+    background: #e6f0f8 !important;
+}
+
+.input-padding {
+    padding: 5px 10px 5px 10px;
+}
+
+.input-h {
+    height: 35px;
+}
+
+.input-w {
+    width: 209px;
+}
+
+.input-search {}
+
+.btn+.btn {
+    margin-right: 10px;
+}
+
+.add-wrap {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.page-input {
+    width: 350px;
+}
+
+.label-textArea {
+    height: 450px;
+    display: inline-block;
+    min-height: 20px;
+    outline: 0;
+    width: calc(100%);
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    line-height: 20px;
+    margin-bottom: 0px;
+    overflow: auto;
+}
+.clear:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.display-block{
+    display: inline-block;
+}
+//日志弹框宽度的设置
+.ngdialog_log {
+    .ngdialog-content {
+        width: 1000px !important;
+    }
+}
+// 加载栏
+// #loading-bar .bar {
+//     -webkit-transition: width 350ms;
+//     -moz-transition: width 350ms;
+//     -o-transition: width 350ms;
+//     transition: width 350ms;
+
+//     background: #29d;
+//     position: fixed;
+//     z-index: 10002;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 0px;
+//     border-bottom-right-radius: 1px;
+//     border-top-right-radius: 1px;
+// }
+// #loading-bar-spinner {
+//     display: block;
+//     position: fixed;
+//     z-index: 10002;
+//     top: 40%;
+//     left: 50%;
+//     transform: (-50%, -50%);
+//   }
+  
+// #loading-bar-spinner .spinner-icon {
+//     width: 30px;
+//     height: 30px;
+  
+//     border:  solid 3px transparent;
+//     border-top-color:  #29d;
+//     border-left-color: #29d;
+//     border-radius: 50%;
+  
+//     -webkit-animation: loading-bar-spinner 400ms linear infinite;
+//     -moz-animation:    loading-bar-spinner 400ms linear infinite;
+//     -ms-animation:     loading-bar-spinner 400ms linear infinite;
+//     -o-animation:      loading-bar-spinner 400ms linear infinite;
+//     animation:         loading-bar-spinner 400ms linear infinite;
+//   }
+  .ngdialog.ngdialog-theme-default{
+    padding-bottom: 90px !important; 
+    padding-top: 88px !important;
+  }

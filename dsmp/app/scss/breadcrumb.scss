@@ -1,0 +1,34 @@
+/**面包屑导航**/
+.common-breadcrumb{
+  background-color: #F3F3F3 !important;
+  font-size: 14px;
+  color: #000000;
+  font-weight: bold;
+  margin-bottom: 0 !important;
+  border:none;
+//padding: 10px 0;
+}
+.common-breadcrumb ol{
+  position: relative;
+//border-bottom: 1px solid #cfd0d2;
+  padding: 10px 0 8px 15px !important;
+  &:before{
+    position: absolute;
+    top: 10px;
+    left:0;
+    content: " ";
+    width: 5px;
+    height: 20px;
+    background-color: #2FCC74;
+    border-radius: 5px;
+  }
+}
+
+.common-breadcrumb .btn-breadcrumb{
+  float: right;
+  margin-top: -30px;
+  z-index: 1;
+  position: relative;
+  color: #777796;
+  border: none;
+}

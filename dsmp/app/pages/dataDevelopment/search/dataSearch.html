@@ -1,0 +1,105 @@
+<!--任务管理页面-->
+<div ng-controller="dataSearchCtrl" class="query-wrap">
+	<div class="leftSearchDiv" ng-class="leftHeightDiv">
+		<ul class="nav">
+			<li class="nav-first" ng-repeat="row in tablesData" ng-click="dbclickFatherCopy(row)">
+				<a data-toggle="collapse" data-parent="#accordion" href="#{{row.dbName}}">
+					<fun-Icon id="yuanshuju"></fun-Icon>
+					<span title="{{ row.dbName }}">{{row.dbName | textLimit: 7}}</span>
+				</a>
+				<ul id="{{row.dbName}}" class="nav panel-collapse collapse">
+					<li class="nav-second" ng-repeat="srow in row.tableList" ng-dblclick="dbclickCopy(srow)">
+						<a title="{{srow}}">{{srow}}</a>
+					</li>
+				</ul>
+			</li>
+
+		</ul>
+	</div>
+
+	<div class="rightSearchDiv">
+		<form name="outerForm" class="tab-form-demo mb20 mt5 searchDiv">
+			<uib-tabset active="activeSearch">
+				<uib-tab ng-repeat="row in tabList">
+					<uib-tab-heading>
+						{{row}}
+						<!--<i class="glyphicon glyphicon-remove" ng-click="closeTab($index,row)"></i>-->
+					</uib-tab-heading>
+					<div class="mt10 tab-btnGroup">
+							<div class="cursor-pointer fr btn-border color-blue ml15" ng-click="execute(row,sqlTypeText[$index])">
+								<fun-Icon id="zhixing01"></fun-Icon>
+								<span>执行</span>
+							</div>
+							<div class="cursor-pointer fr btn-border color-blue" ng-click="save(row,sqlTypeText[$index])">
+								<fun-Icon id="baocun"></fun-Icon>
+								<span>保存</span>
+							</div>
+
+							<!--<button class="cursor-pointer btn-border color-blue fr" ng-click="execute(row,sqlTypeText[$index])">
+							<fun-icon id="zhixing01"></fun-icon>执行</button>
+							<button class="cursor-pointer btn-border color-blue fr mr10" ng-click="save(row,sqlTypeText[$index])">保存</button>-->
+						</div>
+						<textarea id="text{{$index}}" required ng-trim="false" ng-model="sqlTypeText[$index]"></textarea>
+
+				</uib-tab>
+
+			</uib-tabset>
+		</form>
+
+		<form name="outerForm" class="tab-form-demo tabPage searchDiv">
+			<uib-tabset active="tabIndex">
+				<uib-tab>
+					<uib-tab-heading>
+						执行历史
+					</uib-tab-heading>
+					<table ng-table="tableParams" class="table table-striped tablist">
+						<thead>
+							<th>执行状态</th>
+							<th>sql类型</th>
+							<th>sql内容</th>
+							<th>执行时间</th>
+							<th>操作</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="row in historyData">
+								<td>
+									<fun-icon ng-if="row.status==1" id="lvseyuan"></fun-icon>
+									<fun-icon ng-if="row.status==0" id="hongseyuan"></fun-icon>
+								</td>
+								<td ng-bind="row.logType"></td>
+								<td ng-bind="row.logContent | textLimit: 80" title="{{ row.logContent }}"></td>
+								<td ng-bind="row.createTime |date:'yyyy-MM-dd HH:mm:ss'"></td>
+								<td>
+
+									<fun-icon-title title="编辑" id="bianji-gray" ng-click="editHistory(row)"></fun-icon-title>
+									<fun-icon-title title="删除" id="del-round" ng-click="deleteHistory(row)"></fun-icon-title>
+									<fun-icon-title title="执行" id="zhixing01" ng-click="exectueHistory(row)"></fun-icon-title>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</uib-tab>
+
+				<uib-tab>
+					<uib-tab-heading>
+						执行结果
+					</uib-tab-heading>
+					<table class="table table-striped tablist">
+						<thead>
+							<th ng-repeat="row in columnData"> {{row}}</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="str in DataSearch">
+								<td ng-repeat="(key,value) in str">
+									<a title="{{value}}">{{value}}</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</uib-tab>
+
+			</uib-tabset>
+		</form>
+
+		</div>
+	</div>

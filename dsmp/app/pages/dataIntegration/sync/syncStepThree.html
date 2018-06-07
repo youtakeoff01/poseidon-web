@@ -1,0 +1,81 @@
+<form class="content"  ng-controller="syncStepThreeCtrl">
+    <div class="mb15">
+        <div class="dialog-text "><span class="must-before">目标源类型：</span></div>
+
+        <ui-select class="dialog-input" ng-model="targetType" ng-change="targetChangeType(targetType)">
+            <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+            <ui-select-choices repeat="item in targetSourceType | filter: $select.search">
+                <span ng-bind-html="item.name | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>  
+    </div>
+
+    <div class="mb15">
+        <div class="dialog-text "><span class="must-before">目标源库：</span></div>
+        <ui-select class="dialog-input" ng-model="syncInfoData.dsmpSource">
+            <ui-select-match placeholder="请选择">{{$select.selected.srcName}}</ui-select-match>
+            <ui-select-choices repeat="item in dsmpData | filter: $select.search">
+                <span ng-bind-html="item.srcName | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+
+    <div class="mb15">
+        <ng-form name="targetForm">
+            <div class="dialog-text "><span class="must-before">目标表：</span></div>
+            <input class="form-control dialog-input" 
+                type="text" 
+                ng-model="syncInfoData.targetTable" 
+                ng-maxlength=48
+                ng-pattern= "/^[A-Za-z][\w]*$/" 
+                ng-blur="checkTable(syncInfoData.targetTable)"
+                />
+                <p ng-show="targetForm.$invalid && targetForm.$dirty" style="margin-left:10px; font-size: 12px; color: red;">请输入任意字母数字下划线,只能以字母开头，且最大长度为24</p>
+        </ng-form>
+    </div>
+
+    <div class="mb15">
+        <ng-form name="targetAndForm">
+            <div class="dialog-text "><span class="must-before">任务并行度：</span></div>
+            <input class="form-control dialog-input" 
+                type="text" 
+                ng-model="syncInfoData.targetAndTable" 
+                ng-pattern= "/^[1-9][0-9]*$/" 
+                />
+                <p ng-show="targetAndForm.$invalid && targetAndForm.$dirty" style="margin-left:10px; font-size: 12px; color: red;">请输入除0之外的任何整数</p>
+        </ng-form>
+    </div>
+
+    <div class="mb15" ng-show = 'partitionDisplay'>
+        <div class="dialog-text "><span class="must-before">是否分区：</span></div>
+        <div class="checkboxDiv">
+            <input style="margin-left: -150px;" type="radio" value="0" ng-model="partition" ng-click="changepart(partition)" />
+            <span class="paadingall">是</span>
+            <input type="radio"  checked value="1" ng-model="partition" ng-click="changepart(partition)" ng-checked="true"/>
+            <span class="paadingall">否</span>
+        </div>
+    </div>
+
+    <div class="mb15" ng-show="partition==0 && partitionDisplay">
+        <div class="dialog-text "><span>同步方式：</span></div>
+        <div class="checkboxDiv">
+            <input style="margin-left: -130px;" type="radio" value="0" ng-model="syncType" ng-click="changesyncType(syncType)" /><span class="paadingall">全量</span>
+            <input type="radio" value="1" ng-model="syncType" ng-click="changesyncType(syncType)" /><span class="paadingall">增量</span>
+        </div>
+    </div>
+
+    <div class="mb15" ng-show="partition==0 && partitionDisplay">
+        <div class="dialog-text "><span>分区字段：</span></div>
+        <!--<input class="form-control dialog-input" type="text" ng-model="syncInfoData.partitionText" />-->
+        <ui-select class="dialog-input" ng-model="syncInfoData.partitionText" >
+            <ui-select-match placeholder="请选择">{{$select.selected.id}}</ui-select-match>
+            <ui-select-choices repeat="item in sendFile | filter: $select.search">
+                <span ng-bind-html="item.id | highlight: $select.search"></span>
+            </ui-select-choices>
+    </div>
+
+	<div class="mb15">
+		<input type="submit" class="previous-step dialog-ok page-ml " wz-previous value="上一步" />
+		<input type="submit" class="next-step  dialog-ok  form-control " ng-click="getNextData()" value="下一步"   />
+	</div>
+</form>

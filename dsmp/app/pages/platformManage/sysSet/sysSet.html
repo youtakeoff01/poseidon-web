@@ -1,0 +1,74 @@
+<div class="">
+	<!--系统设置-->
+	<div ng-controller="sysSetCtrl" class="query-wrap sysSet-wrap">
+
+		<div class="funPanel-contain">
+			<div class="cursor-pointer fl btn-border ml10 color-blue">
+				<fun-Icon id="daoru"></fun-Icon>
+				<span>导入</span>
+			</div>
+			<div class="cursor-pointer fl btn-border ml10 color-blue" ng-click="openExcel()">
+				<fun-Icon id="daochu"></fun-Icon>
+				<span>导出</span>
+			</div>
+			<div class="cursor-pointer fl btn-border ml10 color-blue" ng-click="saveData(sysData)">
+				<fun-Icon id="baocun"></fun-Icon>
+				<span>保存配置</span>
+			</div>
+		</div>
+
+		<fun-Panel panel-Title="Hadoop Cluster" class="wd100">
+			<div class="cursor-pointer fl btn-border ml10 color-blue" ng-click="addConfig()">
+				<span>同步集群配置</span>
+			</div>
+		</fun-Panel>
+
+		<fun-Panel panel-Title="Ambari配置" class="wd100">
+			<div class="mb15 ml10">
+				<div class="sysSet-text">
+					<span>Ambari Server：</span>
+				</div>
+				<input class="form-control dialog-input" type="text" ng-model="sysData.ambari_Name" required />
+			</div>
+			
+			<div class="mb15 ml10">
+				<div class="sysSet-text">
+					<span>Ambari User：</span>
+				</div>
+				<input class="form-control dialog-input" type="text" ng-model="sysData.ambari_user" required />
+			</div>
+			
+			<div class="mb15 ml10">
+				<div class="sysSet-text">
+					<span>Ambari Password：</span>
+				</div>
+				<input class="form-control dialog-input" type="password" ng-model="sysData.ambari_psword" required />
+			</div>
+		</fun-Panel>
+
+		<fun-Panel panel-Title="Cache配置" class="wd100">
+			<div class="mb15 ml10">
+				<div class="sysSet-text">
+					<span>Cache Server：</span>
+				</div>
+				<input class="form-control dialog-input" type="text" ng-model="sysData.cache_name" required />
+			</div>
+		</fun-Panel>
+
+		<fun-Panel panel-Title="Azkaban" class="wd100">
+			<div class="mb15 ml10">
+				<div class="sysSet-text">
+					<span>Azkaban Server：</span>
+				</div>
+				<input class="form-control dialog-input" type="text" ng-model="sysData.azkaban_name" required />
+			</div>
+			
+			<div class="mb15 ml10">
+				<div class="sysSet-text">
+					<span>Azkaban DB：</span>
+				</div>
+				<input class="form-control dialog-input" type="text" ng-model="sysData.azkaban_DB" required />
+			</div>
+		</fun-Panel>
+	</div>
+</div>

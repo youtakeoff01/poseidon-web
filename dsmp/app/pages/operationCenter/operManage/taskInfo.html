@@ -1,0 +1,92 @@
+<!--description 任务信息-->
+<div ng-controller="taskInfoCtrl" class="query-wrap">
+    <div class="tablist-details">
+        <div class="position-relative query-table">
+
+            <div class="tablist-bar">
+                <!-- 按任务名称查询 -->
+                <div class="tablist-search">
+                    <div class="display-iblock hand-border input-padding input-h input-w input-search">
+                        <input class="hand-input" placeholder="请输入任务名称" ng-model="searchNameKey"
+                               fun-Keyboard="{method:'dataNameSearch'}" ng-keyup="myKeyup($event)"/>
+                        <fun-Icon id="msnui-find" ng-click="dataNameSearch()" class="search-icon"></fun-Icon>
+                    </div>
+                </div>
+                <!-- 按任务类型查询 -->
+                <div class="tablist-search ml15">
+                    <div class="display-iblock hand-border input-padding input-h input-w input-search">
+                        <input class="hand-input" placeholder="请输入任务类型" ng-model="searchtypeKey"
+                               fun-Keyboard="{method:'dataTypeSearch'}" ng-keyup="myKeyup($event)"/>
+                        <fun-Icon id="msnui-find" ng-click="dataTypeSearch()" class="search-icon"></fun-Icon>
+                    </div>
+                </div>
+
+                <div class="right_btn fr color-blue">
+                    <div class="cursor-pointer fr btn-border btn-delete color-blue ml10" ng-click="batchDelete()">
+                        <fun-Icon id="shanchu"></fun-Icon>
+                        <span>批量删除</span>
+                    </div>
+                </div>
+
+            </div>
+            <table ng-table="tableParams" class="table table-striped tablist operationTable">
+                <thead>
+                <tr>
+                    <th style="width: 4%">
+                        <span class="checkBox file-checkbox">
+                            <input type="checkbox" class="input_check" id="ckAllComSt" ng-model="isSelectAll"
+                                    ng-click="selectAll(isSelectAll)"><label for="ckAllComSt"></label>
+                        </span>
+                    </th>
+                    <th style="width: 8%">任务名称</th>
+                    <th style="width: 8%">任务类型</th>
+                    <th style="width: 8%">jar名称</th>
+                    <th style="width: 8%">入口类</th>
+                    <th style="width: 8%">系统参数</th>
+                    <th style="width: 8%">用户参数</th>
+                    <th style="width: 12%">定时器</th>
+                    <th style="width: 8%">修改人</th>
+                    <th style="width: 14%">修改时间</th>
+                    <th style="width: 10%">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in taskData">
+                    <td>
+                        <span class="checkBox file-checkbox">
+                            <input type="checkbox" class="input_check"
+                                id="{{'TaskCheck'+item.id}}" 
+                                ng-model="selected[item.id]">
+                            <label for="{{'TaskCheck'+item.id}}"></label>
+                        </span>
+                    </td>
+                    <td title="{{ item.taskName }}"><span>{{ item.taskName | textLimit: 8 }}</span></td>
+                    <td ng-bind="item.taskType"></td>
+                    <td>
+                        <span title="{{ item.jarName }}">{{ item.jarName | textLimit: 8 }}</span>
+                    </td>
+                    <td>
+                    	<span title="{{item.entryClass}}">{{item.entryClass | textLimit: 8}}</span>
+                    </td>
+                    <td>
+                    	<span title="{{item.systemParam}}">{{item.systemParam | textLimit: 8}}</span>
+                    </td>
+                    <td>
+                        <span title="{{ item.userParam }}">{{ item.userParam | textLimit: 8 }}</span>
+                    </td>
+                    <td ng-bind="item.timerAttribute"></td>
+                    <td ng-bind="item.updateUser"></td>
+                    <td ng-bind="item.updateTime |date:'yyyy-MM-dd HH:mm:ss'"></td>
+                    <td>
+                        <fun-icon-title title="任务调度" id="bianji" ng-click="timerSet(item)" ng-show=" item.taskType=='SQOOP' "></fun-icon-title>
+                        <fun-icon-title title="编辑" id="bianji" ng-click="editTask(item)" ng-show=" item.taskType=='SPARK' || item.taskType=='STORM' "></fun-icon-title>
+                        <fun-icon-title title="删除" id="del-round" ng-click="deleteTask(item)"></fun-icon-title>
+                        <fun-icon-title title="执行" id="zhixing01"  ng-click="exectueTask(item)" ng-show=" item.taskType=='SPARK' || item.taskType=='STORM' "></fun-icon-title>
+                        <fun-icon-title title="配置并执行" id="shezhi1"  ng-click="paraConfig(item)" ng-show=" item.taskType=='SQOOP' "></fun-icon-title>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

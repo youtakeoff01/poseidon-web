@@ -1,0 +1,67 @@
+<dialog-Template>
+	<div class="addCategory-wrap">
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">账号：</span></div>
+			<input class="form-control dialog-input" ng-model="addUserData.userName"  ng-blur="seachTableName(addUserData.userName)" />
+		</div>
+		<!--<div class="mb10">-->
+			<!--<div class="dialog-text "><span class="must-before">密码：</span></div>-->
+			<!--<input class="form-control dialog-input" type="password" ng-model="addUserData.password" />-->
+		<!--</div>-->
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">E-mail：</span></div>
+			<input class="form-control dialog-input" ng-model="editUserData.email" required/>
+		</div>
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">姓名：</span></div>
+			<input class="form-control dialog-input" ng-model="addUserData.realName" />
+		</div>
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">用户类别：</span></div>
+			<select class="form-control dialog-input" name="userType" ng-model="editUserData.userType">
+				<option value="ldap" selected>ldap</option>
+				<option value="psdon">psdon</option>
+			</select>
+		</div>
+		<div class="mb10">
+			<!-- 目前注释掉用户组 -->
+			<!-- <div class="dialog-text" ng-model="addUserData.groupId"><span class="must-before">用户组：</span></div>
+
+			<ui-select class="dialog-input" ng-model="addUserData.groupName">
+				<ui-select-match placeholder="请选择">{{$select.selected.groupName}}</ui-select-match>
+				<ui-select-choices repeat="item in userListData | filter: $select.search">
+					<span ng-bind-html="item.groupName | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select> -->
+		</div>
+
+		<div class="mb10">
+			<div class="dialog-text " ng-model="addUserData.roleId"><span class="must-before">用户角色：</span></div>
+			<ui-select ng-model="addUserData.roleName" class="dialog-input" theme="bootstrap">
+				<ui-select-match placeholder="请选择">{{$select.selected.roleName}}</ui-select-match>
+				<ui-select-choices repeat="item in roleListData | filter: $select.search">
+					<span ng-bind-html="item.roleName | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+		</div>
+
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">用户状态：</span></div>
+			<ui-select ng-model="addUserData.status" class="dialog-input" theme="bootstrap">
+				<ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+				<ui-select-choices repeat="item in userState | filter: $select.search">
+					<span ng-bind-html="item.name | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+			
+			<!-- <select class="form-control dialog-input" placeholder="--请选择--" ng-model="addUserData.status">
+				<option>可用</option>
+				<option>禁用</option>
+				<option>删除</option>
+			</select> -->
+			<!--<input class="form-control dialog-input" ng-model="addUserData.status"/>-->
+
+		</div>
+
+	</div>
+</dialog-Template>

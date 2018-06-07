@@ -1,0 +1,60 @@
+<style>
+	.steps-indicator li.done a::before {
+		background-image: url(assets/images/duihao.png);
+		background-color: #ffffff;
+	}
+
+	.steps-indicator li.current a::before {
+		background-image: url(assets/images/current.png);
+		background-color: #ffffff;
+	}
+
+	.steps-indicator li a::before {
+		background-image: url(assets/images/next.png);
+		background-color: #ffffff !important;
+	}
+	
+	.steps-indicator li.editing a::before {
+	background-image: url(assets/images/previous.png);
+	background-color: #ffffff !important;
+	}
+</style>
+<div class="query-wrap sync-wrap" ng-controller="syncCtrl">
+    <div class="pt15 ml15 mr15  pb15 divSync">
+		<ul class="synSwitch">
+			<li ng-class="{'syn-choosed':syncStep==0}" ng-click="stepChange(0)">数据同步</li>
+			<li ng-class="{'syn-choosed':syncStep==1}" ng-click="stepChange(1)">实时同步</li>
+		</ul>
+       <!--  <button class="cursor-pointer btn" ng-class="{'btn-blue':syncStep==0}" ng-click="stepChange(0)">数据同步</button>
+        <button class="cursor-pointer btn" ng-class="{'btn-blue':syncStep==1}" ng-click="stepChange(1)">实时同步</button> -->
+    </div>
+
+    <div ng-include="'app/pages/dataIntegration/sync/syncTimeStep.html'" ng-show="syncStep==1"></div>
+
+	<div class="tablist-details" ng-show="syncStep==0">
+		<div class="position-relative">
+			<wizard on-finish="finishedWizard()">
+				<wz-step wz-title="新建任务" canexit="syncStepOne" >
+					<div ng-include="'app/pages/dataIntegration/sync/syncStepOne.html'"></div>
+				</wz-step>
+
+				<wz-step wz-title="数据源配置" canenter="syncStepTwo">
+					<div ng-include="'app/pages/dataIntegration/sync/syncStepTwo.html'"></div>
+				</wz-step>
+
+				<wz-step wz-title="目标源配置" >
+					<div ng-include="'app/pages/dataIntegration/sync/syncStepThree.html'"></div>
+				</wz-step>
+				<wz-step wz-title="字段映射">
+					<div ng-include="'app/pages/dataIntegration/sync/syncStepFour.html'"></div>
+				</wz-step>
+				<wz-step wz-title="保存预览">
+					<div ng-include="'app/pages/dataIntegration/sync/syncStepFive.html'"></div>
+				</wz-step>
+				<wz-step wz-title="保存成功">
+					<div ng-include="'app/pages/dataIntegration/sync/syncStepSix.html'"></div>
+				</wz-step>
+			</wizard>
+		</div>
+	</div>
+</div>

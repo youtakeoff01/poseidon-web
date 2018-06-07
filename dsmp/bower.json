@@ -1,0 +1,111 @@
+{
+  "name": "dsmp",
+  "dependencies": {
+    "angular": "^1.6.3",
+    "angular-animate": "^1.6.3",
+    "angular-base64": "^2.0.5",
+    "angular-resource": "^1.6.3",
+    "angular-sanitize": "^1.6.3",
+    "angular-ui-router": "0.4.2",
+    "angular-breadcrumb": "^0.5.0",
+    "angular-loading-bar": "^0.9.0",
+    "animate.css": "^3.5.2",
+    "bootstrap": "3.3.0",
+    "echarts": "^3.4.0",
+    "jquery": "^3.2.0",
+    "ng-dialog": "^1.0.1",
+    "ng-table": "0.8.3",
+    "angular-ui-select": "^0.19.6",
+    "angular-bootstrap": "^2.5.0",
+    "angular-toastr": "^2.1.1"
+  },
+  "overrides": {
+    "angular": {
+      "main": [
+        "angular.min.js"
+      ]
+    },
+    "angular-animate": {
+      "main": [
+        "angular-animate.min.js"
+      ]
+    },
+    "angular-base64": {
+      "main": [
+        "angular-base64.min.js"
+      ]
+    },
+    "angular-resource": {
+      "main": [
+        "angular-resource.min.js"
+      ]
+    },
+    "angular-sanitize": {
+      "main": [
+        "angular-sanitize.min.js"
+      ]
+    },
+    "angular-ui-router": {
+      "main": [
+        "release/angular-ui-router.min.js"
+      ]
+    },
+    "angular-breadcrumb": {
+      "main": [
+        "dist/angular-breadcrumb.min.js"
+      ]
+    },
+    "angular-loading-bar": {
+      "main": [
+        "build/loading-bar.min.js",
+        "build/loading-bar.min.css"
+      ]
+    },
+    "animate.css": {
+      "main": [
+        "animate.min.css"
+      ]
+    },
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.min.js",
+        "dist/css/bootstrap.min.css"
+      ]
+    },
+    "echarts": {
+      "main": [
+        "dist/echarts.min.js"
+      ]
+    },
+    "jquery": {
+      "main": [
+        "dist/jquery.min.js"
+      ]
+    },
+    "ng-dialog": {
+      "main": [
+        "js/ngDialog.min.js"
+      ]
+    },
+    "ng-table": {
+      "main": [
+        "dist/ng-table.min.js",
+        "dist/ng-table.min.css"
+      ]
+    },
+    "angular-ui-select": {
+      "main": [
+        "dist/select.min.js",
+        "dist/select.min.css"
+      ]
+    },
+    "angular-bootstrap": {
+      "main": [
+        "ui-bootstrap-tpls.min.js"
+      ]
+    }
+  },
+  "devDependencies": {
+    "angular-wizard": "^0.10.0"
+  }
+}

@@ -1,0 +1,62 @@
+<!--数据源管理-->
+<div ng-controller="sourceCtrl" class="query-wrap">
+	<div class="tablist-details">
+		<div class="position-relative query-table"> 
+			<div class="tablist-bar">
+				<div class="tablist-search">
+					<div class="display-iblock hand-border input-padding input-h input-w input-search">
+						<input class="hand-input" placeholder="请输入数据源" fun-Keyboard="{method:'dataSearch'}" ng-model="searchKey" ng-keyup="myKeyup($event)" />
+						<fun-Icon id="msnui-find" ng-click="dataSearch()" class="search-icon"></fun-Icon>
+					</div>
+				</div>
+
+				<div class="right_btn fr color-blue">
+					<div class="cursor-pointer fr btn-border btn-add" ng-click="addSource()">
+						<fun-Icon id="xinzeng1"></fun-Icon>
+						<span>新建</span>
+					</div>
+					<div class="cursor-pointer fr btn-border btn-delete color-blue" ng-click="batchDelete()">
+						<fun-Icon id="shanchu"></fun-Icon>
+						<span>批量删除</span>
+					</div>
+				</div>
+			</div>
+			<table ng-table="tableParams" class="table table-striped tablist">
+				<thead>
+					<tr>
+						<th>
+							<span class="checkBox file-checkbox"><input type="checkbox" class="input_check" id="checkAllSource"   ng-model="isSelectAll" ng-click="selectAll(isSelectAll)"><label for="checkAllSource"></label></span>
+						</th>
+						<th>数据源</th>
+						<th>数据库名称</th>
+						<th>地址</th>
+						<th>类型</th>
+						<th>更新时间</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in queryData">
+						<td style="width: 80px;">
+							<!-- <span class="checkBox file-checkbox"><input type="checkbox" class="input_check" id="{{'check'+$index}}" ng-model="item.checked" ng-value="item.id"><label for="{{'check'+$index}}"></label></span> -->
+							 <span class="checkBox file-checkbox">
+								 <input type="checkbox" class="input_check" id="{{'check'+item.id}}" ng-model="selected[item.id]">
+								 	<label for="{{'check'+item.id}}"></label>
+								</span>
+						</td>
+						<td ng-bind="item.srcName"></td>
+						<td ng-bind="item.dbName"></td>
+						<td ng-bind="item.dbUrl"></td>
+						<td ng-bind="item.dbType"></td>
+						<td ng-bind="item.updateTime |date:'yyyy-MM-dd HH:mm:ss'"></td>
+						<td>
+							<fun-icon-title title="库迁移" id="qianyi"></fun-icon-title>&nbsp;&nbsp;
+							<fun-icon-title title="编辑" id="bianji" ng-click="editTable(item)"></fun-icon-title>&nbsp;&nbsp;
+							<fun-icon-title title="删除" id="del-round" ng-click="deleteTable(item)"></fun-icon-title>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

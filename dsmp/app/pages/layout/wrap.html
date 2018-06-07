@@ -1,0 +1,53 @@
+<!--//右边页面切换-->
+<div ng-controller="wrapCtrl">
+
+    <div id="scroll-nav" class="scrollDiv">
+        <fun-icon class="icon-fl" ng-show="menuTabs.length>menuNum && leftMove" ng-click="leftFloat()" id="zuo"></fun-icon>
+        <fun-icon class="icon-fr" ng-show="rightMove" ng-click="rightFloat()" id="you"></fun-icon>
+    	<ul class="nav nav-tabs tabsNav">
+            <li ng-repeat=" item in scliceTabs">
+                <a ng-click="changeActive(item)" class="{{item.active==true?'activeColor':'normalColor'}}">
+                    {{item.name}}
+                      <fun-icon ng-click="closeTab($index,item)" ng-show="item.key!='main'" id="guanbi2"></fun-icon>
+                    <!--<i class="glyphicon glyphicon-remove" ng-click="closeTab($index,item)" ng-show="item.key!='main'"></i>-->
+                </a>
+    		</li>
+        </ul>
+        
+		<!--<span class="srollSpan" ng-repeat=" item in scliceTabs" >
+    		<a ng-click="changeActive(item)" class="{{item.active==true?'activeColor':'normalColor'}}">
+    			{{item.name}}
+    			<i class="glyphicon glyphicon-remove" ng-click="closeTab($index,item)"></i>
+    		</a>
+        </span>-->
+        <div  ng-repeat="item in scliceTabs">
+            <ng-include ng-show="item.active==true" src="item.tabUrl"></ng-include>
+        </div>
+    </div>
+    <!--<uib-tabset active="activeForm">
+            <uib-tab index=$index ng-repeat="row in scliceTabs">
+                <uib-tab-heading>
+                    {{row.name}}
+                    <i class="glyphicon glyphicon-remove" ng-click="closeTab($index,row)"></i>
+                </uib-tab-heading>
+
+
+                <div ng-if="row.keyId=='log'" ng-include="'app/pages/platformManage/log/log.html'"></div>
+                <div ng-if="row.keyId=='sysSet'" ng-include="'app/pages/platformManage/sysSet/sysSet.html'"></div>
+                <div ng-if="row.keyId=='userGroup'" ng-include="'app/pages/platformManage/userGroup/userGroup.html'"></div>
+                <div ng-if="row.keyId=='userManage'" ng-include="'app/pages/platformManage/userManage/userManage.html'"></div>
+
+                <div ng-if="row.keyId=='ditch'" ng-include="'app/pages/operationCenter/ditch/ditchWarn.html'"></div>
+                <div ng-if="row.keyId=='custom'" ng-include="'app/pages/operationCenter/custom/customWarn.html'"></div>
+                <div ng-if="row.keyId=='operManage'" ng-include="'app/pages/operationCenter/operManage/opmanage.html'"></div>
+                <div ng-if="row.keyId=='history'" ng-include="'app/pages/operationCenter/operManage/opmanageHistory.html'"></div>
+
+                <div ng-if="row.keyId=='operCase'" ng-include="'app/pages/operationCenter/operCase/opmaintCase.html'"></div>
+                <div ng-if="row.keyId=='machineDetail'" ng-include="'app/pages/operationCenter/operManage/machineDetail.html'"></div>
+                <div ng-if="row.keyId=='search'" ng-include="'app/pages/dataDevelopment/search/dataSearch.html'"></div>
+                <div ng-if="row.keyId=='learning'" ng-include="'app/pages/machineLearning/machine/machineLearning.html'"></div>-->
+    <!--</div>
+
+</div>-->
+
+</div>

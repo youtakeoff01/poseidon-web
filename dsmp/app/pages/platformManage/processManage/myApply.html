@@ -1,0 +1,69 @@
+<!-- 我的申请 -->
+<div ng-controller="applyCtrl">
+    <div class="tablist-details">
+        <div class="position-relative query-table"> 
+            <div class="tablist-bar">
+                <div class="tablist-search">
+                    <div class="tablist-search-formControl">
+                        <span>审批状态</span>
+                        <ui-select class="mr10 tablist-search-select" ng-model="applyselect" ng-change="dataSearch(applyselect)">
+                            <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices repeat="item in applyState | filter: $select.search">
+                                <span ng-bind-html="item.name | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="tablist-search-formControl">
+                        <span>
+                            学生AD
+                        </span>
+                        <div class="display-block hand-border input-padding input-h input-w input-search">
+                            <input class="hand-input" placeholder="请输入学生AD" ng-model="searchKeyAd" />
+                            <fun-Icon id="msnui-find" ng-click="keySearch(searchKeyAd)"  class="search-icon"></fun-Icon>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right_btn fr color-blue">
+                    <div class="cursor-pointer fr btn-border btn-add" ng-click="addApply()">
+                        <fun-Icon id="xinzeng1"></fun-Icon>
+                        <span>新建</span>
+                    </div>
+                </div>
+            </div>
+            <table ng-table="applyTableParams" class="table table-striped tablist">
+                <tr ng-repeat="item in queryData">
+                    <td data-title=" '序号' ">{{ $index+1}}</td>
+                    <td data-title=" '选择学生' "  width="10%">
+                        <span ng-repeat="student in item.students">
+                            {{student.adNumber}}
+                            <span ng-show="$index+1 != item.students.length">,</span>
+                        </span>
+                    </td>
+                    <td data-title="'申请理由'" width="150">
+                        <div class="reson-text" ng-show="!showMore" >
+                            {{item.applyReason | textLimit:30}}
+                            <button class="caret-btn" ng-click="showMore = !showMore" title="展开">
+                                <span class="caret-btn-bottom" ></span>
+                            </button>
+                        </div>
+                        <div ng-show="showMore" class="reson-text">
+                            {{item.applyReason}}
+                            <button class="caret-btn" ng-click="showMore = !showMore" title="收起">
+                                <span class="caret-btn-top"></span>
+                            </button>
+                        </div>
+                    </td>
+                    <td data-title="'有效期'">{{item.vld}}</td>
+                    <td data-title="'提交时间'" style="max-width: 100px">{{item.createDate}}</td>
+                    <td data-title=" '审批人1' ">{{item.approvals[0].approvaler.userName}}</td>
+                    <td data-title="'审批状态1'">{{item.approvals[0].approvalStatus | applyStatus}}</td>
+                    <td data-title="'处理时间1'" style="max-width: 100px">{{item.approvals[0].approvalTime}}</td>
+                    <td data-title=" '审批人2' ">{{item.approvals[1].approvaler.userName}}</td>
+                    <td data-title="'审批状态2'">{{item.approvals[1].approvalStatus | applyStatus}}</td>
+                    <td data-title="'处理时间2'" style="max-width: 100px">{{item.approvals[1].approvalTime}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<dialog-Template>
+
+<div class="mb15">
+	<div class="dialog-text">
+		<span class="must-before">任务类型：</span></div>
+		<ui-select class="dialog-input" ng-model="taskData.type" ng-change="typeChange(taskData.type)" ng-required="required">
+			<ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+			<ui-select-choices repeat="item in typeData | filter: $select.search">
+				<span ng-bind-html="item.name | highlight: $select.search"></span>
+			</ui-select-choices>
+		</ui-select>  
+	</div>
+	
+	<div class="mb15">
+		<div class="dialog-text">
+			<span class="must-before">任务名称：</span>
+		</div>
+		<input class="form-control dialog-input" ng-model="taskData.name" ng-blur="checkName()" ng-required="required" />
+	</div>
+	
+	<div class="mb15" ng-hide="fdhidden">
+		<div class="dialog-text">
+			<span class="must-before">入口类：</span>
+		</div>
+		<input class="form-control dialog-input" ng-model="taskData.enclass" ng-required="required" />
+	</div>
+	
+	<div class="mb15" ng-hide="fdhidden">
+		<div class="dialog-text">
+			<span class="must-before">系统参数：</span>
+		</div>
+		<input class="form-control dialog-input" ng-model="taskData.system" ng-required="required" />
+	</div>
+	
+	<div class="mb15">
+		<div class="dialog-text">
+			<span class="must-before{{fdMust}}">用户参数：</span>
+		</div>
+		<input class="form-control dialog-input" ng-model="taskData.user" ng-required="required" />
+	</div>
+
+</dialog-Template>

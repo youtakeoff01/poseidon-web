@@ -1,0 +1,49 @@
+<dialog-Template>
+        <div class="add-wrap">
+            <div class="mb10">
+                <div class="dialog-text"><span class="must-before">规则名称：</span></div>
+                <ng-form name='editRuNaForm'>
+                    <input class="form-control dialog-input"
+                        type="text"
+                        ng-model="editRuleData.ruleName"
+                        required/>
+                </ng-form>
+            </div>
+            <div class="mb10">
+                <div class="dialog-text"><span class="must-before">规则描述：</span></div>
+                <ng-form name="editRuDesForm">
+                    <input class="form-control dialog-input" 
+                        type="text"
+                        ng-model="editRuleData.ruleDes" 
+                        required/>
+                </ng-form>
+            </div>
+            
+            <div class="mb10">
+                <div class="dialog-text"><span class="must-before">规则状态：</span></div>
+                <ui-select class="dialog-input" ng-model="editRuleData.ruleState">
+                    <ui-select-match placeholder="请选择">{{ $select.selected }}</ui-select-match>
+                    <ui-select-choices repeat="item in ruleStates track by $index">
+                        <span ng-bind-html="item"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+    
+            <div class="mb10">
+                <div class="dialog-text"><span>触发事件：</span></div>
+                <ng-form name="editRuEvForm">
+                    <input class="form-control dialog-input" 
+                        type="text" 
+                        ng-model="editRuleData.ruleEvent"/>
+                </ng-form>
+            </div>
+    
+            <div class="mb10">
+                <div class="dialog-text"><span class="must-before">规则内容：</span></div>
+                <textarea class="form-control dialog-textarea" 
+                    ng-model="editRuleData.ruleContent" 
+                    required/>
+                </textarea>
+            </div>
+        </div>
+    </dialog-Template>

@@ -1,0 +1,85 @@
+<dialog-Template>
+	<div class="add-wrap">
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">账号：</span></div>
+			<input class="form-control dialog-input" ng-model="editPerm.user" disabled="" />
+		</div>
+		
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">库名：</span></div>
+			<ui-select ng-model="selected.value" class="dialog-input" theme="bootstrap" on-select="changeHiveName(selected.value)">
+				<ui-select-match>{{$select.selected}}</ui-select-match>
+				<ui-select-choices repeat="item in hiveName">
+					<span ng-bind-html="item "></span>
+				</ui-select-choices>
+			</ui-select>
+		</div>
+
+		<div class="mb10">
+			<div class="dialog-text"><span  class="must-before">访问表名：</span></div>
+			<ui-select ng-model="editPer.hasPerTab" multiple class="dialog-input">
+				<ui-select-match placeholder="请选择">{{ $item }}</ui-select-match>
+				<ui-select-choices repeat="item in dataList track by $index">
+					<span ng-bind-html="item"></span>
+				</ui-select-choices>
+			</ui-select>
+		</div>
+		<!-- <div class="mb10" style="height: 200px;">
+			<div class="dialog-text  table-text"><span class="must-before">数据访问：</span>
+			</div>
+			<div class="left-panel">
+				<div class="left-panel-head">
+					访问列表
+				</div>
+				<ul class="nav">
+					<li ng-repeat="table in dataList"  class="cursor-pointer bgColor">
+						<span ng-click="changeEmployeeTag(table)" ng-show="table.flag==undefined ||table.flag==0" title="{{ ble.dataName }}">{{table.dataName | textLimit: 16}}</span>
+						<span class="perInfo-gray" ng-dblclick="changeEmployeeTag(table)" ng-show="table.flag==1" title="{{ table.dataName }}">{{table.dataName | textLimit: 16}}</span>
+					</li>
+				</ul>
+			</div>
+			<div class="right-panel">
+				<div class="right-panel-head">
+					已选择
+				</div>
+				<div class="content_right">
+					<div ng-repeat="b in dataList"  class="cursor-pointer bgColor" ng-if="b.flag==1">
+						<fun-Icon id="close" class="icon-left" ng-click="changeEmployeeTag(b)"></fun-Icon>
+						<span class="span_right" title="{{ b.dataName }}">{{b.dataName | textLimit: 10}} </span>
+					</div>
+				</div>
+			</div>
+		</div> -->
+
+		<div class="mb10">
+			<div class="dialog-text">
+				<span class="must-before right151">权限：</span>
+			</div>
+			<div class="check-width">
+				<ul style="text-align: left;">
+					<li>
+						<input type="checkbox" ng-model="editPerCheck.all" ng-true-value="'all'" ng-click="changeCheckbox(editPerCheck.all)"> <span class="paadingall">所有(ALL)</span>
+					</li>
+					<li>
+						<input type="checkbox" ng-model="editPerCheck.alter" ng-true-value="'alter'" ng-click="changeCheckbox(editPerCheck.alter)"> <span class="paadingall">修改元数据(ALTER)</span>
+					</li>
+					<li>
+						<input type="checkbox" ng-model="editPerCheck.update" ng-true-value="'update'" ng-click="changeCheckbox(editPerCheck.update)"> <span class="paadingall">更新表数据(UPDATE)</span>
+					</li>
+					<li>
+						<input type="checkbox" ng-model="editPerCheck.create" ng-true-value="'create'" ng-click="changeCheckbox(editPerCheck.create)"> <span class="paadingall">创建表(CREATE)</span>
+					</li>
+					<li>
+						<input type="checkbox" ng-model="editPerCheck.drop" ng-true-value="'drop'" ng-click="changeCheckbox(editPerCheck.drop)"> <span class="paadingall">删除表(DROP)</span>
+					</li>
+					<li>
+						<input type="checkbox" ng-model="editPerCheck.index" ng-true-value="'index'" ng-click="changeCheckbox(editPerCheck.index)"> <span class="paadingall">建索引(INDEX)</span>
+					</li>
+					<li>
+						<input type="checkbox" ng-model="editPerCheck.select" ng-true-value="'select'" ng-click="changeCheckbox(editPerCheck.select)"> <span class="paadingall">查询表(SELECT)</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</dialog-Template>

@@ -1,0 +1,25 @@
+<!--topbar-->
+<div class="app-header" ng-include="'app/pages/layout/header.html'" ></div>
+<!--topbar-->
+
+<div ng-controller="menuCtrl">
+	<!--menu-->
+		<div class="app-menu-{{ mini }}">
+			<span id="tip">
+				{{ tipContent }}
+			</span>
+			<span id="twoTip">
+				{{ twoTipCont }}
+			</span>
+			<div class="app-menu-wrap-true"  ng-include="'app/pages/layout/menu.html'" ng-if="mini" style="background-color: #34495e;"></div>
+			<div class="app-menu-wrap-false"  ng-include="'app/pages/layout/menumini.html'" ng-if="!mini" style="background-color: #34495e;"></div>
+		</div>
+	<!--menu-->
+	
+	<!--content-->
+		<div class="app-content-{{ mini }}" ng-include="'app/pages/layout/wrap.html'">
+					<!--<div ui-view="viewA"></div>-->
+					<!--<div ui-view="viewB"></div>-->
+		</div>
+	<!--content-->
+</div>

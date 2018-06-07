@@ -1,0 +1,179 @@
+<div ng-controller="tbDetCtrl" class="query-wrap sync-wrap">
+    <ul class="text-tab">
+        <li>
+            <fun-icon-title title="返回" id="fanhui1" ng-click="back()"></fun-icon-title>
+        </li>
+        <li ng-click="pageChange(1)" ng-class="{'text-choosed': tabShow==1}">字段信息</li>
+        <!-- <li ng-click="getTableDetail(2)" ng-class="{'text-choosed': tabShow==2}">基本信息</li>
+        <li ng-show="false">产出信息</li>
+        <li ng-show="false">变更历史</li> -->
+        <li ng-click="getupBlockRela(5)" ng-class="{'text-choosed': tabShow==5}">上游血缘</li>
+        <li ng-click="getdownBlockRela(7)" ng-class="{'text-choosed': tabShow==7}">下游血缘</li>
+        <!-- <li ng-click="getTablePreview(6)" ng-class="{'text-choosed': tabShow==6}">数据预览</li> -->
+    </ul>
+    <!-- 字段信息 -->
+    <div class="tablist-details" ng-show="tabShow==1" style="border: 1px solid #e6f0f8; margin: 16px">
+        <div class='non-part-filed'>非分区字段:</div>
+        <div>
+            <table ng-table="tableParams" class="table table-striped tablist">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>字段名称</th>
+                        <th>类型</th>
+                        <th>描述</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in tableInfo">
+                        <td>{{ $index }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.type }}</td>
+                        <td>{{ item.description }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- 上游血缘 -->
+    <div class="tablist-details" ng-show="tabShow==5" style="border: 1px solid #e6f0f8; margin: 16px">
+        <div style="height: 400px">
+            <ng-echarts style="width: 1000px; height: 400px;  position: absolute;" ec-config="relationConfig1" ec-option="relativeOption1"></ng-echarts>
+        </div>
+    </div>
+    <!-- 下游血缘 -->
+    <div class="tablist-details" ng-show="tabShow==7" style="border: 1px solid #e6f0f8; margin: 16px">
+        <div style="height: 400px">
+            <ng-echarts style="width: 1000px; height: 400px;  position: absolute;" ec-config="relationConfig2" ec-option="relativeOption2"></ng-echarts>
+        </div>
+    </div>
+    <!-- 基本信息 -->
+    <div class="tablist-details" ng-show="tabShow==2" style="border: 1px solid #e6f0f8; margin: 16px">
+        <ul class="details-li">
+            <li><span>所有者</span>
+                <span>{{ tableDetails.owner }}</span>
+            </li>
+            <li><span>是否临时表</span>
+                <span>{{ tableDetails.temporary }}</span>
+            </li>
+            <li><span>最近更新人</span>
+                <span>{{ tableDetails.updatedBy }}</span>
+            </li>
+            <li><span>表全称</span>
+                <span>{{ tableDetails.qualifiedName }}</span>
+            </li>
+            <li><span>表对应数据库名称</span>
+                <span>{{ tableDetails.dbName }}</span>
+            </li>
+            <li><span>类型</span>
+                <span>{{ tableDetails.typeName }}</span>
+            </li>
+            <li><span>描述</span>
+                <span>{{ tableDetails.description }}</span>
+            </li>
+            <li><span>最近更新时间</span>
+                <span>{{ tableDetails.updateTime }}</span>
+            </li>
+            <li><span>版本</span>
+                <span>{{ tableDetails.version }}</span>
+            </li>
+            <li><span>分类</span>
+                <span>{{ tableDetails.classifications }}</span>
+            </li>
+            <li><span>创建人</span>
+                <span>{{ tableDetails.createdBy }}</span>
+            </li>
+            <li><span>创建时间</span>
+                <span>{{ tableDetails.createTime }}</span>
+            </li>
+            <li><span>表名</span>
+                <span>{{ tableDetails.name }}</span>
+            </li>
+            <li><span>唯一标识</span>
+                <span>{{ tableDetails.guid }}</span>
+            </li>
+            <li><span>属性</span>
+                <span>{{ tableDetails.attributes }}</span>
+            </li>
+            <li><span>状态</span>
+                <span>{{ tableDetails.status }}</span>
+            </li>
+        </ul>
+    </div>
+    <!-- 数据预览 -->
+    <div class="tablist-details" ng-show="tabShow==6" style="border: 1px solid #e6f0f8; margin: 16px; min-height: 460px;">
+        <table ng-table="tableParamsPreview" class="table table-striped tablist">
+            <thead>
+                <tr>
+                    <th ng-repeat = "column in tableInfoList">{{ column }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in tableInfoPreview" ng-init="outerIndex = $index" ng-show="outerIndex < 10 && prePgOne == true">
+                    <td ng-repeat=" key in  tableInfoList" title="{{ item[key] }}" >{{ item[key] | textLimit: 20}}</td>
+                </tr> 
+                <tr ng-repeat="item in tableInfoPreview" ng-init="outerIndex = $index" ng-show="outerIndex >9 && outerIndex < 20 && prePgTwo == true ">
+                    <td ng-repeat=" key in  tableInfoList" title="{{ item[key] }}" >{{ item[key] | textLimit: 20}}</td>
+                </tr>
+                <tr ng-repeat="item in tableInfoPreview" ng-init="outerIndex = $index" ng-show="outerIndex > 19 && outerIndex < 30 && prePgThree == true ">
+                     <td ng-repeat=" key in  tableInfoList" title="{{ item[key] }}" >{{ item[key] | textLimit: 20}}</td>
+                </tr>
+                <tr ng-repeat="item in tableInfoPreview" ng-init="outerIndex = $index" ng-show="outerIndex > 29 && outerIndex < 40 && prePgFour == true ">
+                     <td ng-repeat=" key in  tableInfoList" title="{{ item[key] }}" >{{ item[key] | textLimit: 20}}</td>
+                </tr>
+                <tr ng-repeat="item in tableInfoPreview" ng-init="outerIndex = $index" ng-show="outerIndex > 39 && outerIndex < 50 && prePgFive == true ">
+                    <td ng-repeat=" key in  tableInfoList" title="{{ item[key] }}" >{{ item[key] | textLimit: 20}}</td>
+                </tr> 
+            </tbody>
+        </table>
+        <div class="pageTwo" ng-click="prePgOne = false; prePgTwo = false; prePgThree = false; prePgFour = false; prePgFive = true"  ng-show="coltotal>40">5</div>
+        <div class="pageOne" ng-click="prePgOne = false; prePgTwo = false; prePgThree = false; prePgFour = true; prePgFive = false"  ng-show="coltotal>30">4</div>
+        <div class="pageOne" ng-click="prePgOne = false; prePgTwo = false; prePgThree = true; prePgFour = false; prePgFive = false"  ng-show="coltotal>20">3</div>
+        <div class="pageOne" ng-click="prePgOne = false; prePgTwo = true; prePgThree = false; prePgFour = false; prePgFive = false"  ng-show="coltotal>10">2</div>
+        <div class="pageOne" ng-click="prePgOne = true; prePgTwo = false; prePgThree = false; prePgFour = false; prePgFive = false"  ng-show="coltotal>0">1</div>
+    </div>
+</div>
+<style>
+    .details-li>li>span:nth-child(1){
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        text-align: right;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .details-li>li>span:nth-child(2){
+        height: 30px;
+        line-height: 30px;
+        width: 400px;
+        display: inline-block;
+        margin-left: 36px;
+        border-bottom: 1px solid #e6f0f8;
+    }
+    .pageTwo {
+        margin-bottom: 10px;
+        text-align: center;
+        line-height: 20px;
+        float: right;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #eee;
+        color: #428bca;
+    }
+    .pageOne {
+        margin-bottom: 10px;
+        margin-right: 10px;
+        text-align: center;
+        line-height: 20px;
+        float: right;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #eee;
+        color: #428bca;
+    }
+    .pageBack {
+        color: #fff;
+        background: #428bca;
+    }
+</style>

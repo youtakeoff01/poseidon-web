@@ -1,0 +1,57 @@
+<!-- 规则管理 -->
+<div ng-controller="ruleManageCtrl" class="query-wrap">
+	<div class="tablist-details">
+		<div class="position-relative query-table">
+			<div class="tablist-bar">
+				<div class="tablist-search" >
+					<div class="display-iblock hand-border input-padding input-h input-w input-search">
+						<input class="hand-input" placeholder="请输入规则名称" fun-Keyboard="{method:'dataSearch'}" ng-model="searchKey" />
+						<fun-Icon id="msnui-find" ng-click="dataSearch(searchKey)" class="search-icon"></fun-Icon>
+					</div>
+				</div>
+				
+				<div ng-show="permSetAddCode!='0'" class="right_btn fr color-blue">
+					<div class="cursor-pointer fr btn-border btn-add" ng-click="addRuleManage()">
+						<fun-Icon id="xinzeng1" ></fun-Icon>
+						<span>新建</span>
+					</div>
+					<div ng-show="permSetDeleteCode!='0'" class="cursor-pointer fr btn-border btn-delete color-blue" ng-click="batchDelete()">
+						<fun-Icon id="shanchu"></fun-Icon>
+						<span>批量删除</span>
+					</div> 
+				</div>
+			</div>
+
+			<table ng-table="tableParams" class="table table-striped tablist">
+				<thead>
+					<tr>
+						<th style="width: 5%;">
+							<span class="checkBox file-checkbox"><input type="checkbox" class="input_check" id="checkAllSource"  ng-model="isSelectAll" ng-click="selectAll(isSelectAll)"><label for="checkAllSource"></label></span>
+						</th>
+						<th style="width: 10%;">规则名称</th>
+						<th style="width: 10%;">规则描述</th>
+						<th style="width: 10%;">更新时间</th>
+						<th style="width: 8%;">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in ruleData">
+						<td>
+							<span class="checkBox file-checkbox">
+								<input type="checkbox" class="input_check" id="{{'check'+item.id}}" ng-model="selected[item.id]">
+								<label for="{{'check'+item.id}}"></label>
+							</span>
+						</td>
+						<td ng-bind="item.scriptTitle"></td>
+						<td ng-bind="item.scriptDesc"></td>
+						<td ng-bind="item.updateDatetime"></td>
+						<td>
+							<fun-icon-title title="编辑" id="bianji" ng-click="editRule(item)"></fun-icon-title>&nbsp;&nbsp;
+							<fun-icon-title title="删除" id="del-round" ng-click="deleteRule(item)"></fun-icon-title>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

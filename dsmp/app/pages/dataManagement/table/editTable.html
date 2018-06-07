@@ -1,0 +1,117 @@
+<dialog-Template>
+	<div class="add-wrap">
+		<!-- 单个表名 -->
+		<div class="mb15" ng-show="editTableInfo.table != '*'">
+			<div class="dialog-text ">
+				<span class="must-before">表名：</span>
+			</div>
+			<input class="form-control dialog-input" ng-model="datetoBehind.tableName" disabled="" />
+		</div>
+		<!-- 所有表名 -->
+		<div class="mb15" ng-show="editTableInfo.table == '*'">
+			<div class="dialog-text"><span class="must-before">表名：</span></div>
+			<ui-select class="dialog-input-long" ng-model="datetoBehind.tableName" on-select="changeTabName(datetoBehind.tableName)">
+				<ui-select-match>
+					<span ng-bind="$select.selected"></span>
+				</ui-select-match>
+				<ui-select-choices repeat="item in tableNames track by $index">
+					<span ng-bind="item"></span>
+				</ui-select-choices>
+			</ui-select>
+		</div>
+		<!-- 字段 -->
+		<div class="dialog-text ziduan position-relative"><span class="must-before" >字段：</span></div>
+		<div>
+			<!-- 字段下拉框样式 -->
+			<!-- <table st-table st-safe-src="milestoneData" class="table-bordered table-small inner-container" style="display: block; height: 166px; overflow-y: scroll; border: none">
+				<thead style=" display: table; width: 100%; table-layout: fixed;">
+					<tr class="tr-width">
+						<th st-sort="fieldName">字段名</th>
+						<th st-sort="fieldType">数据类型</th>
+						<th st-sort="fieldDescribe">描述</th>
+						<th st-sort="">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="row in editHiveFields" style="display: table; width: 100%; table-layout: fixed;">
+						<td>
+							<div class="input-group">
+								<input class="form-control" type="text" ng-model="row.fieldName" ng-disabled="row.add" required ></input>
+							</div>
+						</td>
+						<td>
+							<div class="input-group">
+								<ui-select class="dialog-input-small" ng-model="row.fieldType" ng-disabled="row.add">
+									<ui-select-match  placeholder="请选择">
+										<span ng-bind="$select.selected"></span>
+									</ui-select-match>
+									<ui-select-choices repeat="type in tabFieldType track by $index">
+										<span ng-bind="type"></span>
+									</ui-select-choices>
+								</ui-select>
+							</div>
+						</td>
+						<td>
+							<div class="input-group">
+								<input ng-model="row.fieldDescribe" class="form-control" ng-disabled="row.add" required >
+							</div>
+						</td>
+						<td>
+							<fun-Icon id="close" ng-click="removeItem(row.id)" ng-show="!row.add"></fun-Icon>
+						</td>
+					</tr>
+				</tbody>
+			</table> -->
+			<!-- 字段不下拉框样式 -->
+			<table st-table st-safe-src="milestoneData" class="table-bordered table-small inner-container" >
+				<thead >
+					<tr class="tr-width">
+						<th st-sort="fieldName">字段名</th>
+						<th st-sort="fieldType">数据类型</th>
+					   <!--  <th st-sort="flag">分区字段</th> -->
+						<th st-sort="fieldDescribe">描述</th>
+						<th st-sort="">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="row in editHiveFields" >
+						<td>
+							<div class="input-group">
+								<input class="form-control" type="text" ng-model="row.fieldName" ng-disabled="row.add" required ></input>
+							</div>
+						</td>
+						<td>
+							<div class="input-group">
+								<ui-select class="dialog-input-small" ng-model="row.fieldType" ng-disabled="row.add">
+									<ui-select-match  placeholder="请选择">
+										<span ng-bind="$select.selected"></span>
+									</ui-select-match>
+									<ui-select-choices repeat="type in tabFieldType | filter: $select.search">
+										<span ng-bind-html="type | highlight: $select.search" ></span>
+									</ui-select-choices>
+								</ui-select>
+							</div>
+						</td>
+						<td>
+							<div class="input-group">
+								<input ng-model="row.fieldDescribe" class="form-control" ng-disabled="row.add" required >
+							</div>
+						</td>
+						<td>
+							<fun-Icon id="close" ng-click="removeItem(row.id)" ng-show="!row.add"></fun-Icon>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="cursor-pointer btn-new add-row" ng-click="addProRow()">
+			<fun-Icon id="xinzeng1" class="color-blue"></fun-Icon>
+			<span>添加行</span>
+		</div>
+
+	</div>
+</dialog-Template>
+<style lang="">
+	.inner-container::-webkit-scrollbar{display: none;}
+</style>

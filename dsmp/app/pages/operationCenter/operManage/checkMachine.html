@@ -1,0 +1,17 @@
+<dialog-Template>
+
+	<table class="table table-striped tablist" >
+		<thead>
+			<th ng-repeat="row in detailcolumnData"> {{row}}</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="str in detailDataSearch">
+				<td ng-repeat="(key,value) in str">
+					<a title="{{value}}">{{value}}</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	
+</dialog-Template>

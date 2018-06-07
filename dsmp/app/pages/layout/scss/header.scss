@@ -1,0 +1,54 @@
+.head-nav{
+    background: #1e2327;
+    height: 50px;
+    line-height: 50px;
+}
+.header-logo {
+    width: 200px;
+    padding-left: 23px;
+    position: relative;
+}
+.header-logo img {
+    width: 130px;
+    height: 37px;
+}
+.header-logo svg {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    margin-top: -15px;
+    right: -15px;
+}
+.header-userInfo {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 40px;
+    height: 50px;
+    line-height: 32px;
+    a{
+        padding: 0px !important;
+        text-decoration: none;
+    }
+}
+.changePwd {
+    min-width: 100px !important;
+    text-indent: 10px;
+}
+//.header-userInfo img {
+//  width: 30px;
+//  height: 30px;
+//}
+.head-message {
+    position: absolute;
+    top: 0;
+    left: 226px;
+    height: 50px;
+    line-height: 50px
+}
+.waring-massage {
+    position: absolute;
+    left: 65px;
+    top: 0px;
+}

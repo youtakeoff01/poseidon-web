@@ -1,0 +1,31 @@
+<div ng-controller="headerCtrl" class="head-nav">
+	<div class="header-logo">
+		<img src="assets/images/logoTwo.png" />
+		<!--<fun-Icon id="shousuoanniu"></fun-Icon>-->
+	</div>
+	
+	<ul class="nav-pills header-userInfo">
+		<li class="pd10">
+			<a data-toggle="dropdown">
+				<span style="color: #ffffff">欢迎您：<span class="fa fa-user"></span>
+				<span class="user_div" ng-bind="headerUserName" style="color: #ffffff"></span>
+				<strong class="caret" style="color: #ffffff"></strong>
+			</a>
+			<ul class="dropdown-menu changePwd">
+				<li>
+					<img src="assets/images/gaimima.png" alt="">
+					<a ng-click="updatePsd()" style="display: inline-block; color: #7f8c8d">修改密码</a>
+				</li>
+				<li>
+					<img src="assets/images/tuichu.png" alt="">
+					<a ui-serf="signin" ng-click="exitBtn()" style="display: inline-block; color: #7f8c8d">退出平台</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<!--<div class="header-userInfo">
+	<img src="assets/images/toux.jpg" />
+	<span class="margin-left-10 margin-right-10" ng-bind="headerUserName"></span>
+	<fun-Icon id="xiangxia1"></fun-Icon>
+</div>-->
+</div>

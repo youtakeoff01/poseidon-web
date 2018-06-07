@@ -1,0 +1,79 @@
+.wrap-wrap {
+    padding: 10px 25px 0px 25px;
+}
+
+.navgate {
+    width: 100%;
+    height: 16px;
+    font-size: 16px;
+    color: #95A5A6;
+    padding-left: 15px;
+    position: relative;
+    line-height: 16px;
+}
+
+.navgate:before {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 16px;
+    left: 0px;
+    background-color: #1CC75F;
+}
+
+.wrap-content {
+    background-color: #FFFFFF;
+    border-radius: 2px;
+}
+
+.icon-fl {
+    float: left;
+    //position:absolute;
+    margin-top: 10px;
+}
+
+.icon-fr {
+    float: right;
+    //position:absolute;
+    margin-top: 10px;
+}
+
+.scrollDiv {
+    border: 1px solid #DDDDDD;
+}
+
+.activeColor {
+    background: #FFFFFF;
+}
+.tabsNav{
+    cursor: pointer;
+}
+.tabsNav a {
+    font-size: 12px;
+    padding: 6px 18px !important;
+    text-decoration: none;
+    color: #777;
+    margin-right: 0px !important;
+    border-radius: 0 !important;
+}
+
+.tabsNav a:hover,
+.tabsNav a:focus {
+    background: #FFFFFF !important;
+}
+
+.tabsNav li:last-child {
+    border-right: 1px solid #DDDDDD;
+}
+
+.tabsNav li:first-child {
+    border-left: none !important;
+}
+
+.tabsNav li:not(:first-child) {
+   border-left: 1px solid #DDDDDD;
+}
+
+.tabsNav li:not(:last-child) {
+    border-left: 1px solid #DDDDDD;
+}

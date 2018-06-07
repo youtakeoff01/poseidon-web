@@ -1,0 +1,14 @@
+
+<!--任务管理页面-->
+<div ng-controller="opmanageCtrl" class="query-wrap sync-wrap">
+	<ul class="text-tab">
+		<li ng-click="refresh(1)" ng-class="{'text-choosed':textShow==1}">同步任务</li>
+		<li ng-click="refresh(2)" ng-class="{'text-choosed':textShow==2}">开发任务</li>
+		<li ng-click="refresh(3)" ng-class="{'text-choosed':textShow==3}">机器学习任务</li>
+		<li ng-click="refresh(4)" ng-class="{'text-choosed':textShow==4}">提交任务</li>
+	</ul>
+	<div ng-include="'app/pages/operationCenter/operManage/syncTask.html'" ng-show=' textShow==1 '></div>
+	<div ng-include="'app/pages/operationCenter/operManage/scriptFile.html'" ng-show=' textShow==2 '></div>
+	<div ng-include="'app/pages/operationCenter/operManage/machineManage.html'" ng-show=' textShow==3 '></div>
+	<div ng-include="'app/pages/operationCenter/operManage/taskInfo.html'" ng-show='textShow==4'></div>
+</div>

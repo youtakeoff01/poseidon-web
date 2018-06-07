@@ -1,0 +1,56 @@
+
+<!--自定义通知页面-->
+<div ng-controller="customWarmCtrl" class="query-wrap">
+	<div class="tablist-details">
+		<div class="position-relative query-table">
+			<div class="tablist-bar">
+				<div class="tablist-search">
+					<div class="display-iblock hand-border input-padding input-h input-w input-search">
+						<input class="hand-input" placeholder="请输入通知规则" ng-model="searchKey" fun-Keyboard="{method:'dataSearch'}" ng-keyup="myKeyup($event)" />
+						<fun-Icon id="msnui-find" ng-click="dataSearch()" class="search-icon"></fun-Icon>
+					</div>
+				</div>
+				<div class="right_btn fr color-blue">
+                    <div class="cursor-pointer fr btn-border btn-add" ng-click="addTable(id)">
+                        <fun-Icon id="xinzeng1"></fun-Icon>
+                        <span>新建</span>
+                    </div>
+					<div class="cursor-pointer fr btn-border btn-delete color-blue ml10" ng-click="batchDelete()">
+						<fun-Icon id="shanchu"></fun-Icon>
+						<span>批量删除</span>
+					</div>
+				</div>
+			</div>
+			<table ng-table="tableParams" class="table table-striped tablist">
+				<thead>
+					<tr>
+						<th>
+							<span class="checkBox file-checkbox">
+								<input type="checkbox" class="input_check" id="ckAllCutWn" ng-model="isSelectAll" ng-click="selectAll(isSelectAll)"><label for="ckAllCutWn"></label></span>
+						</th>
+						<th>规则名称</th>
+						<th>触发规则</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in tabData">
+						<td style="width: 80px;">
+							<span class="checkBox file-checkbox"><input type="checkbox" class="input_check" id="{{'check'+item.id}}" ng-model="selected[item.id]" ><label for="{{'check'+item.id}}"></label></span>
+						</td>
+						<td ng-bind="item.ruleName"></td>
+						<td ng-bind="item.triggerRule"></td>
+						<!-- <td ng-bind="item.updateTime |date:'yyyy-MM-dd HH:mm:ss'" ng-if="item.updateTime!=undefined"></td>
+						<td ng-bind="item.createTime |date:'yyyy-MM-dd HH:mm:ss'" ng-if="item.updateTime==undefined"></td> -->
+						<td>
+
+							<fun-icon-title title="编辑" id="bianji" ng-click="editTable(item)"></fun-icon-title>
+							<fun-icon-title title="删除" id="del-round" ng-click="deleteTable(item)"></fun-icon-title>
+							<!--<fun-Icon id="gengduo" ng-click="editTable(item)" ></fun-Icon>-->
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

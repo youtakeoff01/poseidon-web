@@ -1,0 +1,28 @@
+<dialog-Template>
+
+    <div class="mb15">
+        <div class="dialog-text"><span class="must-before">任务类型：</span></div>
+        <input class="form-control dialog-input" ng-model="editJrtsData.type" ng-blur="checkName()" disabled/>
+    </div>
+    
+    <div class="mb15">
+        <div class="dialog-text"><span class="must-before">任务名称：</span></div>
+        <input class="form-control dialog-input" ng-model="editJrtsData.name" ng-blur="checkName()" disabled/>
+    </div>
+    
+    <div class="mb15">
+        <div class="dialog-text"><span class="must-before">入口类：</span></div>
+        <input class="form-control dialog-input" ng-model="editJrtsData.enclass" ng-required="true"/>
+    </div>
+    
+    <div class="mb15">
+        <div class="dialog-text"><span class="must-before">系统参数：</span></div>
+        <input class="form-control dialog-input" ng-model="editJrtsData.system" ng-required="true"/>
+    </div>
+    
+    <div class="mb15">
+        <div class="dialog-text"><span class="must-before">用户参数：</span></div>
+        <input class="form-control dialog-input" ng-model="editJrtsData.user" ng-required="true"/>
+    </div>
+
+</dialog-Template>

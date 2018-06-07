@@ -1,0 +1,66 @@
+<!--权限管理-->
+<div ng-controller="permissionCtrl" class="query-wrap">
+	<div class="tablist-details">
+		<div class="position-relative query-table">
+			<div class="tablist-bar">
+				<div class="tablist-search" >
+					<div class="display-iblock hand-border input-padding input-h input-w input-search">
+						<input class="hand-input" placeholder="请输入账号" fun-Keyboard="{method:'dataSearch'}" ng-model="searchKey" />
+						<fun-Icon id="msnui-find" ng-click="dataSearch()" class="search-icon"></fun-Icon>
+					</div>
+				</div>
+				
+				<div ng-show="permSetAddCode!='0'" class="right_btn fr color-blue"  >
+					<div class="cursor-pointer fr btn-border btn-add" ng-click="addPermission()">
+						<fun-Icon id="xinzeng1" ></fun-Icon>
+						<span>新建</span>
+					</div>
+					<!-- <div ng-show="permSetDeleteCode!='0'" class="cursor-pointer fr btn-border btn-delete color-blue" ng-click="batchDelete()">
+						<fun-Icon id="shanchu" ></fun-Icon>
+						<span>批量删除</span>
+					</div> -->
+				</div>
+			</div>
+
+			<table ng-table="tableParams" class="table table-striped tablist">
+				<thead>
+					<tr>
+						<th style="width: 5%;">序号</th>
+						<th style="width: 8%;">账号</th>
+						<th style="width: 12%;">策略名</th>
+						<th style="width: 10%;">服务名</th>
+						<th style="width: 10%;">数据库</th>
+						<th style="width: 10%;">表</th>
+						<th style="width: 30%;">权限</th>
+						<th style="width: 8%;">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in tabData">
+						<td ng-model="item.name">
+							{{ $index+1 }}
+						</td>
+						<td>
+							<ul>
+								<li ng-repeat="value in item.user">{{ value }}</li>
+							</ul>
+						</td>
+						<td ng-bind="item.name | textLimit:14" title="{{ item.name }}"></td>
+						<td ng-bind="item.serviceName"></td>
+						<td ng-bind="item.databases[0]"></td>
+						<td>
+							<ul>
+								<li ng-repeat="value in item.tables">{{ value }}</li>
+							</ul>
+						</td>
+						<td ng-bind="item.type"></td>
+						<td>
+							<fun-icon-title title="编辑" ng-show="permSetUpdateCode!='0'" id="bianji" ng-click="editPermission(item)" ></fun-icon-title>&nbsp;&nbsp;
+							<fun-icon-title title="删除" ng-show="permSetDeleteCode!='0'" id="del-round" ng-click="deleteTable(item)"></fun-icon-title>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

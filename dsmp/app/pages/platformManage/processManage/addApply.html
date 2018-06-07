@@ -1,0 +1,89 @@
+<dialog-Template>
+    <div>
+        <div class="mb10">
+            <div class="display-block pro-title-width"><span>学生AD</span></div>
+            <div class="display-block hand-border back-fff ml10">
+                <input type="text" class="input-noside"
+                       placeholder="请输入学生AD"
+                       ng-model="studentAdNumber"/>
+                <fun-Icon id="msnui-find" ng-click="studentSearch(studentAdNumber)" class="search-icon"></fun-Icon>
+            </div>
+        </div>
+        <div class="mb15" ng-if="showStudentList">
+            <table class="table table-striped tablist pro-table">
+                <thead>
+                    <tr class="tr-width">
+                        <th>选择</th>
+                        <th>学生ID</th>
+                        <th>学生AD</th>
+                        <th>学生姓名</th>
+                        <th>专业</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in studentList">
+                        <td><input type="checkbox" ng-model="selected[$index]" ng-true-value="{{ item }}" ng-false-value="{{ item.id }}" ng-click="changeStudent($event,item)"></td>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.adNumber }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.major }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mb10">
+            <div class="mb10-line">
+                <div class="display-block pro-title-width mb10-line-text">
+                    <span>已选择学生</span>
+                </div>
+                <div class="display-block ml10 hand-border back-fff pro-choosed">
+                    <span class="hand-border display-block mr4" style="margin-top: 3px" ng-repeat="item in selStudent track by $index" ng-hide="item == null">
+                        {{ item.name }}
+                        <fun-icon id="guanbi2" ng-click="delete(item.id)"></fun-icon>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="mb10">
+            <div class="display-block">
+                <div class="display-block pro-title-width">
+                    <span>审批人1</span>
+                </div>
+                <ui-select class="ml10 pro-form" ng-model="apply.applyFirst" ng-change="selectOne(apply.applyFirst)" >
+                    <ui-select-match placeholder="请选择">{{$select.selected.userName}}</ui-select-match>
+                    <ui-select-choices repeat="item in approverOne | filter: $select.search">
+                        <span ng-bind-html="item.userName | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="mb10">
+            <div class="display-block pro-title-width">
+                <span>审批人2</span>
+            </div>
+            <ui-select  class="ml10 pro-form" ng-model="apply.applySecond" ng-change="selectTwo(apply.applySecond)" ng-disabled="">
+                <ui-select-match placeholder="请选择">{{$select.selected.userName}}</ui-select-match>
+                <ui-select-choices repeat="item in approverTwo | filter: $select.search">
+                    <span ng-bind-html="item.userName | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="mb10">
+            <div class="validityDate">
+                <div class="display-block pro-title-width">
+                    <span>有效期</span>
+                </div>
+                <input class="form-control pro-form-input ml10" ng-model="apply.time" type="text" disabled/>
+                天
+            </div>
+        </div>
+        <div class="mb10">
+            <div class="">
+                <div class="display-block pro-title-width">
+                    <span>申请理由</span>
+                </div>
+                <textarea name="" id="" cols="42" rows="2" class="ml10" ng-model="apply.reason" maxlength="200"></textarea>
+            </div>
+        </div>
+    </div>
+</dialog-Template>

@@ -1,0 +1,180 @@
+<div>
+	<div class="menu-wrap no-select" ng-style="menu_wrap">
+
+		<ul class="nav" id="accordion">
+			<li class="menu-open" ng-click="folding()">
+				<img src="assets/images/open.png">
+			</li>
+			<li class="menu-item" ng-if="consoleCode!='0'" ng-click="addMenuTabs('控制台','console')" >
+				<a ng-if="consoleCode!='0'">
+					<fun-Icon id="kongzhitai"></fun-Icon>
+					<span class="ml20">控制台</span>
+				</a>
+			</li>
+
+			<li class="menu-item" ng-if="IntegraCode!='0'" ng-init="IntegraActive = true;" >
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseIntegra" ng-click="IntegraActive = !IntegraActive;" >
+					<fun-Icon id="shuju"></fun-Icon>
+					<span class="ml20">数据集成</span>
+					<span class="zuo-caret" ng-show="IntegraActive == true"></span>
+					<span class="xia-caret" ng-show="IntegraActive == false"></span>
+				</a>
+				<ul id="collapseIntegra" class="nav collapse">
+					<li class="menu-item-children" ng-if="dataSourceCode!='0'" ng-click="addMenuTabs('数据源管理','source')" >
+						<img src="assets/images/round.png">
+						<a ui-sref-active="menu-item-active" >数据源管理</a>
+					</li>
+					<li class="menu-item-children" ng-if="dataSyncCode!='0'" ng-click="addMenuTabs('数据同步','sync')" >
+						<img src="assets/images/round.png">
+						<a ui-sref-active="menu-item-active" >数据同步</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="menu-item" ng-if="developCode!='0'" ng-init="developActive = true;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="developActive=!developActive" href="#collapsdevelop">
+					<fun-Icon id="yuanshuju"></fun-Icon>
+					<span class="ml20">数据开发</span>
+					<span class="zuo-caret" ng-show="developActive == true"></span>
+					<span class="xia-caret" ng-show="developActive == false"></span>
+				</a>
+				<ul id="collapsdevelop" class="nav collapse">
+					<li class="menu-item-children" ng-if="searchCode!='0'" ng-click="addMenuTabs('数据加工','search')">
+						<img src="assets/images/round.png">
+						<a ui-sref-active="menu-item-active" >数据加工</a>
+					</li>
+					<li class="menu-item-children" ng-if="tasksubmitCode!='0'" ng-click="addMenuTabs('提交任务','submitTask')">
+						<img src="assets/images/round.png">
+						<a ui-sref-active="menu-item-active" >提交任务</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="menu-item" ng-if="datamanagerCode!='0'" ng-init="datamanagerActive = true;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="datamanagerActive=!datamanagerActive" href="#collapsedatamanager">
+					<fun-Icon id="shujukaifa"></fun-Icon>
+					<span class="ml20">数据管理</span>
+					<span class="zuo-caret" ng-show="datamanagerActive == true"></span>
+					<span class="xia-caret" ng-show="datamanagerActive == false"></span>
+				</a>
+				<ul id="collapsedatamanager" class="nav collapse">
+					<li class="menu-item-children" ng-if="permissionCode!='0'" ng-click="addMenuTabs('数据权限','permission')">
+						<img src="assets/images/round.png">
+						<a ui-sref-active="menu-item-active" >数据权限</a>
+					</li>
+					<li class="menu-item-children" ng-if="tableCode!='0'" ng-click="addMenuTabs('库表管理','table')">
+						<img src="assets/images/round.png">
+						<a ui-sref-active="menu-item-active" >库表管理</a>
+					</li>
+					<li class="menu-item-children" ng-if="fileCode!='0'" ng-click="addMenuTabs('云文件','file')">
+						<img src="assets/images/round.png">
+						<a ui-sref-active="menu-item-active" >云文件</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="menu-item" ng-if="centerCode!='0'" ng-init="centerActive = true;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="centerActive=!centerActive" href="#collapscenter">
+					<fun-Icon id="tubiao-"></fun-Icon>
+					<span class="ml20">运维中心</span>
+					<span class="zuo-caret" ng-show="centerActive == true"></span>
+					<span class="xia-caret" ng-show="centerActive == false"></span>
+				</a>
+				<ul id="collapscenter" class="nav collapse">
+					<li class="menu-item-children" ng-if="noticeCode!='0'" ng-click="addMenuTabs('通知渠道','ditch')">
+						<img src="assets/images/round.png">
+						<a ui-sref-active="menu-item-active">通知渠道</a>
+					</li>
+					<li class="menu-item-children" ng-if="customCode!='0'" ng-click="addMenuTabs('自定义通知','custom')"> 
+						<img src="assets/images/round.png">
+						<a ui-sref-active="menu-item-active">自定义通知</a>
+					</li>
+					<li class="menu-item-children"  ng-if="taskCode!='0'" ng-click="addMenuTabs('任务管理','operManage')">
+						<img src="assets/images/round.png">
+						<a ui-sref-active="menu-item-active">任务管理</a>
+					</li>
+					<li class="menu-item-children" ng-if="caseCode!='0'" ng-click="addMenuTabs('任务运维','operCase')">
+						<img src="assets/images/round.png">
+						<a ui-sref-active="menu-item-active">任务运维</a>
+					</li>
+					<li class="menu-item-children" ng-if="ruleCode!='0'" ng-click="addMenuTabs('规则管理','ruleManage')">
+						<img src="assets/images/round.png">
+						<a ui-sref-active="menu-item-active">规则管理</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="menu-item" ng-if="platformCode!='0'" ng-init="platformActive = true;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="platformActive=!platformActive" href="#collapseplatform">
+					<fun-Icon id="system"></fun-Icon>
+					<span class="ml20">平台管理</span>
+					<span class="zuo-caret" ng-show="platformActive == true"></span>
+					<span class="xia-caret" ng-show="platformActive == false"></span>
+				</a>
+				<ul id="collapseplatform" class="nav collapse">
+					<li class="menu-item-children" ng-if="syLogCode!='0'" ng-click="addMenuTabs('系统日志','log')">
+						<img src="assets/images/round.png">
+						<a ui-sref-active="menu-item-active">系统日志</a>
+					</li>
+					<li class="menu-item-children" ng-if="sySetCode!='0'" ng-click="addMenuTabs('系统设置','sysSet')">
+						<img src="assets/images/round.png">
+						<a ui-sref-active="menu-item-active">系统设置</a>
+					</li>
+					<li class="menu-item-children" ng-if="userCode!='0'" ng-click="addMenuTabs('用户管理','userManage')">
+						<img src="assets/images/round.png">
+						<a ui-sref-active="menu-item-active" >用户管理</a>
+					</li>
+					<li class="menu-item-twoChild" ng-if="processCode!=0" ng-init="processActive = true;">
+						<a data-toggle="collapse" data-parent="#collapseplatform" ui-sref-active="menu-item-active" ng-click="processActive = !processActive" href="#processfrom">
+							<img src="assets/images/round.png">
+							<span class="ml20">流程管理</span>
+							<span class="zuo-caret" ng-show="processActive == true"></span>
+							<span class="xia-caret" ng-show="processActive == false"></span>
+						</a>
+						<ul class="nav collapse" id="processfrom" class="menu-item-threeChild">
+							<li ng-if="myapplyCode!=0" ng-click="addMenuTabs('我的申请','myapply')" >
+								<a href="">
+									<img src="assets/images/round.png"  style="padding-left: 30px;">
+									<span style="padding-left: 20px;">我的申请</span>
+								</a>
+							</li>
+							<li ng-if="myapproval!=0" ng-click="addMenuTabs('我的审批','myapproval')">
+								<a href=""> 
+									<img src="assets/images/round.png"  style="padding-left: 30px;">	
+									<span style="padding-left: 20px;">我的审批</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<!-- 目前注释掉用户组 -->
+					<!-- <li class="menu-item-children">
+						<a ng-if="groupCode!='0'" ui-sref-active="menu-item-active" ng-click="addMenuTabs('用户组管理','userGroup')">用户组管理</a>
+					</li> -->
+				</ul>
+			</li>
+
+			<li class="menu-item" ng-if="artiCode!='0'" ng-init="artiActive = true;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="artiActive=!artiActive" href="#collapsarti">
+					<fun-Icon id="rengongzhineng"></fun-Icon>
+					<span class="ml20">人工智能</span>
+					<span class="zuo-caret" ng-show="artiActive == true"></span>
+					<span class="xia-caret" ng-show="artiActive == false"></span>
+				</a>
+				<ul id="collapsarti" class="nav collapse">
+					<li class="menu-item-children" ng-click="addMenuTabs('组件','learning')">
+						<img src="assets/images/round.png">
+						<a ng-if="machineCode!='0'" ui-sref-active="menu-item-active" >组件</a>
+					</li>
+				</ul>
+			</li>
+
+		<!--	<li class="menu-item">
+				<a ng-click="openFile()">
+					<fun-Icon id="help"></fun-Icon>
+					<span class="ml20">帮助文档</span>
+				</a>
+			</li>-->
+		</ul>
+
+	</div>
+</div>

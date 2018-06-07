@@ -1,0 +1,44 @@
+
+<div class="query-wrap" ng-controller="logCtrl">
+	<div class="tablist-details">
+		<div class="position-relative">
+			
+			<div class="tablist-bar">
+				<div class="tablist-search">
+					<div class="display-iblock hand-border input-padding input-h input-w input-search">
+						<input class="hand-input" placeholder="请输入类型" ng-model="searchKey" ng-keyup="myKeyup($event)"/>
+						<fun-Icon id="msnui-find" ng-click="dataSearch()" class="search-icon"></fun-Icon>
+					</div>
+				</div>
+			</div>
+			
+			<table ng-table="tableParams" class="table table-striped tablist">
+				<thead>
+					<tr>
+						<!--<th class="tablist">
+							日志标题
+						</th>-->
+						<th style="width: 10%">日志类型</th>
+						<th style="width: 40%">日志内容</th>
+						<th style="width: 10%">操作用户</th>
+						<th style="width: 20%">更新时间</th>
+						<!--<th>操作</th>-->
+					</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="item in queryData">
+					<!--<td ng-bind="item.empName" >
+					</td>-->
+					<td ng-bind="item.logType"></td>
+					<td ng-bind="item.logContent | textLimit: 70" title={{item.logContent}} class=""><span></span></td>
+					<td ng-bind="item.userName"></td>
+					<td ng-bind="item.createTime | date:'yyyy-MM-dd HH:mm:ss'"></td>
+					<!--<td>
+						<fun-Icon id="gengduo" ng-click="editLog(item)" ></fun-Icon>&nbsp;&nbsp;
+					</td>-->
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

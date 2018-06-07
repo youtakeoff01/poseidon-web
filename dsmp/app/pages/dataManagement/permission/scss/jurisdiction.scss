@@ -1,0 +1,103 @@
+.from-check {
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.radio-icon {
+  height: 17px;
+  width: 17px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.paadingall {
+  padding: 10px 10px 10px 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.radio-width {
+  width: 260px;
+  top: -20px;
+  position: relative;
+  left: 165px;
+}
+
+.check-width {
+  width: 320px;
+  position: relative;
+  top: -24px;
+  left: 182px;
+}
+
+.right151 {
+  right: 151px;
+}
+
+//新增权限
+.left-panel {
+  background: white;
+  text-align: center;
+  width: 143px;
+  border: 1px solid #CCCCCC;
+  left: 181px;
+  top: -20px;
+  position: relative;
+  height: 200px;
+  overflow: auto;
+}
+
+.right-panel {
+  background: white;
+  text-align: center;
+  border: 1px solid #CCCCCC;
+  position: relative;
+  top: -220px;
+  left: 340px;
+  width: 142px;
+  height: 200px;
+  overflow: auto;
+}
+
+.left-panel-head {
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.right-panel-head {
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.content_right {
+  height: auto;
+}
+
+.table-text {
+  right: 150px;
+  position: relative;
+}
+
+.icon-left {
+  float: left;
+  margin-left: 10px;
+}
+
+.perInfo-gray {
+  background: #95A5A6;
+  display: inherit;
+  color: #ffffff;
+  margin: 1px;
+}
+.acctNum{
+  position: relative;
+  left: 52px;
+}
+.acctNumName{
+  position: absolute; 
+  left: 26px; 
+  top: 3px;
+}
+.bgColor:hover{
+  background-color: #CCCCCC !important;
+}

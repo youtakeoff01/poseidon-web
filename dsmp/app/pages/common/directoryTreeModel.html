@@ -1,0 +1,30 @@
+
+<style>
+	.dt-title {
+		width: 100%;
+		cursor: pointer;
+		color: rgba(0,0,0,0.5);
+	}
+	.dt-title:hover {
+		/*background-color: #00B3EE;*/
+	}
+	.dt-node-active {
+		color: #70C5CA;
+		font-weight: bold;
+	}
+</style>
+
+<div class="dt-title"  ng-click="handleActive($event,currentFolder.srcPath)" >
+	<span ng-if="currentFolder.list.length >0 ">
+		<fun-Icon id="jia" ng-show="!showChild"></fun-Icon>
+		<fun-Icon id="jian" ng-show="showChild"></fun-Icon>
+	</span>
+	<fun-Icon id="6666" ng-hide="currentFolder.list.length >0"></fun-Icon>
+	<fun-Icon id="wenjianjia"></fun-Icon>
+	<span ng-bind="currentFolder.name"></span>
+</div>  
+ <div style="padding-left: 20px;"  ng-show="showChild == true">  
+    <div  ng-repeat="subfolder in currentFolder.list">
+        <directory-Tree current-folder="subfolder"></directory-Tree>  
+    </div>  
+</div> 

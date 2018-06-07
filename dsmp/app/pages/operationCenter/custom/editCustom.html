@@ -1,0 +1,76 @@
+<dialog-Template>
+	<div class="add-wrap">
+
+		<div class="mb10">
+			<div class="dialog-text">
+				<span>规则名称：</span></div>
+			<input class="form-control dialog-input" ng-model="datetoBehind.ruleName" disabled="" />
+
+		</div>
+		<div class="mb10">
+			<div class="dialog-text ">
+				<span class="must-before">触发规则：</span></div>
+
+			<ui-select class="dialog-input" ng-model="datetoBehind.triggerRule" ng-change="selectQuery()">
+				<ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+				<ui-select-choices repeat="item in selectRule | filter: $select.search">
+					<span ng-bind-html="item.name | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+
+			<!--<input class="form-control dialog-input" ng-model="datetoBehind.triggerRule" />-->
+		</div>
+
+		<div class="mb10" ng-show="datetoBehind.triggerRule.id=='1'">
+			<div class="dialog-text">
+				<span class="must-before">条件：</span></div>
+
+			<ui-select class="dialog-input" ng-model="datetoBehind.triggerCondition" ng-change="selectQuery()">
+				<ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+				<ui-select-choices repeat="item in selectData | filter: $select.search">
+					<span ng-bind-html="item.name | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+		</div>
+
+		<div class="mb10" ng-show="datetoBehind.triggerRule.id=='1'" style="position: relative; left: 52px;">
+			<div class="dialog-text " style="position: absolute; left: 24px; top: 8%;">
+				<span class="must-before">规则值：</span></div>
+			<ui-select class="dialog-input" ng-model="datetoBehind.ruleNum" ng-change="selectQuery()">
+				<ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+				<ui-select-choices repeat="item in userData | filter: $select.search">
+					<span ng-bind-html="item.name | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+		</div>
+		
+		<div class="mb10" ng-show="datetoBehind.triggerRule.id=='2'" style="position: relative; left: 52px;">
+			<div class="dialog-text " style="position: absolute; left: 24px; top: 8%;">
+				<span class="must-before">规则值：</span>
+			</div>
+			<ui-select ng-model="data.stateRuleNum" multiple class="dialog-input">
+				<ui-select-match placeholder="请选择">{{$item.name}}</ui-select-match>
+				<ui-select-choices repeat="item in stateData | filter: $select.search">
+					<span ng-bind-html="item.name | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+
+		</div>
+		<div class="mb10">
+			<div class="dialog-text ">
+				<span class="must-before">通知渠道：</span></div>
+			<ui-select class="dialog-input" ng-model="datetoBehind.channelName" >
+				<ui-select-match placeholder="请选择">{{$select.selected.channelName}}</ui-select-match>
+				<ui-select-choices repeat="item in noticeData | filter: $select.search">
+					<span ng-bind-html="item.channelName | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+			<!--<input class="form-control dialog-input" ng-model="datetoBehind.channelName" />-->
+		</div>
+		<div class="mb20">
+			<div class="dialog-text "><span class="must-before">通知内容：</span></div>
+			<textarea class="form-control dialog-textarea" ng-model="datetoBehind.noticeContent"></textarea>
+		</div>
+
+	</div>
+</dialog-Template>

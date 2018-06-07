@@ -1,0 +1,59 @@
+<!--表管理页面-->
+<div ng-controller="tableInforCtrl" class="query-wrap">
+	<div class="tablist-details">
+		<div class="position-relative query-table">
+			<div class="tablist-bar">
+				<!-- <div class="tablist-search" ng-show="tableSearchCode!='0'">
+					<div class="display-iblock hand-border input-padding input-h input-w input-search">
+						<input class="hand-input" placeholder="请输入表名" fun-Keyboard="{method:'dataSearch'}" ng-model="searchKey" ng-keyup="myKeyup($event)" />
+						<fun-Icon id="msnui-find" ng-click="dataSearch()" class="search-icon"></fun-Icon>
+					</div>
+				</div> -->
+				<div class="right_btn fr color-blue" ng-if="isAdmin">
+					<div class="cursor-pointer fr btn-border btn-add create" ng-click="createShow = !createShow" >
+						<fun-Icon id="xinzeng1"></fun-Icon>
+						<span ng-click="addLibrary(id)">库新建</span>
+					</div>
+					<!-- 目前不用 -->
+					<!-- <div class="cursor-pointer fr btn-border btn-delete color-blue" ng-click="batchDelete()">
+						<fun-Icon id="shanchu"></fun-Icon>
+						<span>批量删除</span>
+					</div> -->
+				</div>
+			</div>
+			<table ng-table="tableParams" class="table tablist">
+				<thead>
+					<tr>
+						<th style="width: 5%; text-align: left;">序号</th>
+                        <th style="width: 10%; text-align: left;">库名</th>
+						<th style="width: 10%; text-align: left;">库操作</th>
+						<th style="width: 30%; text-align: left;">表名</th>
+						<th style="width: 30%; text-align: left;" ng-if="isAdmin">用户</th>
+						<th style="width: 8%; text-align: left;">表操作</th>
+					</tr>
+				</thead>
+				<tbody ng-repeat="item in tabData">
+					<tr>
+						<td rowspan="{{item.tablesType.length+3}}">{{ $index+1 }}</td>
+					</tr>
+					<tr>
+						<td rowspan="{{item.tablesType.length+2}}">{{item.databases[0]}}</td>
+					</tr>
+					<tr>
+						<td rowspan="{{item.tablesType.length+1}}">	
+							<fun-icon-title title="新建表" id="xinzeng1-copy" ng-click="addTable(item)" ng-show="item.create"></fun-icon-title>	
+						</td>
+					</tr>
+					<tr ng-repeat="t in item.tablesType">
+						<td ng-click="jumpToDet(item.databases[0],t.table)" class="canDbclick">{{ t.table }}</td>
+						<td ng-if="isAdmin">{{ t.user }}</td>
+						<td>
+							<fun-icon-title title="编辑" id="bianji" ng-show="t.alter" ng-click="editTable(item.databases[0], t)"></fun-icon-title>
+							<fun-icon-title title="删除" id="del-round" ng-show="t.drop" ng-click="deleteTable(item.databases[0], t.table)"></fun-icon-title>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

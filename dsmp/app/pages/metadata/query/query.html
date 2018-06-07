@@ -1,0 +1,42 @@
+<div class="common-breadcrumb">
+	<!--<router-Navigate></router-Navigate>-->
+	<div class="common-breadcrumb" ncy-breadcrumb></div>
+</div>
+
+<div class="query-wrap" ng-controller="queryCtrl">
+	<div class="tablist-details">
+		<div class="position-relative">
+
+			<div class="tablist-bar">
+				<ui-select ng-model="queryInfo" ng-change="selectQuery()">
+					<ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+					<ui-select-choices repeat="item in selectData | filter: $select.search">
+						<span ng-bind-html="item.name | highlight: $select.search"></span>
+					</ui-select-choices>
+				</ui-select>
+
+				
+			</div>
+			<table ng-table="tableParams" class="table table-striped tablist">
+				<thead>
+					<tr>
+						<th class="tablist">名称</th>
+						<th>描述</th>
+						<th>所属用户</th>
+						<!--<th>操作</th>-->
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in queryData">
+						<td ng-bind="item.name"></td>
+						<td ng-bind="item.comment"></td>
+						<td ng-bind="item.owner"></td>
+						<!--<td>
+							<fun-Icon id="gengduo" ng-click="editQuery(item)"></fun-Icon>&nbsp;&nbsp;
+						</td>-->
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,110 @@
+<div class="file-wrap" ng-controller="fileCtrl">
+<div class="file-handle">
+	<div class="file-upload" ng-show="fileUploadCode!='0'">
+		<input type="file" class="file-upload-input" multiple="multiple" onchange="angular.element(this).scope().fileSelected(this)"/>
+		<button class="file-upload-btn">
+			<fun-Icon id="shangchuan1"></fun-Icon>
+			<span>上传</span>
+		</button>
+	</div>
+	
+	<button ng-show="fileCreatCode!='0'" class="file-new-directory" ng-click="isAddDir = true">
+		<fun-Icon id="xinjian1"></fun-Icon>
+		<span>新建文件夹</span>
+	</button>
+	
+	<button class="file-new-directory" ng-show="showDelteBtn && fileRenameCode != '0'" ng-click="deleteFile()">
+		<fun-Icon id="shanchu"></fun-Icon>
+		<span>删除</span>
+	</button>
+	<!--<button class="handle-item">
+		<span>重命名</span>
+	</button>
+	<button class="handle-item">
+		<span>复制到</span>
+	</button>
+	<button class="handle-item handle-item-last">
+		<span>移动到</span>
+	</button>-->
+	
+	<!--<div class="file-search">
+		<input class="file-search-input" placeholder="搜索您的文件" onfocus="this.placeholder=''" onblur="this.placeholder='搜索您的文件'"/>
+		<fun-Icon id="sousuo1" style="float: none;"></fun-Icon>
+	</div>-->
+	
+</div>
+
+<div class="file-navgate">
+	<span ng-repeat = "item in currPath track by $index">
+		
+		<span ng-show="$index < currPath.length-1">
+			<a href="javascript:void(0);" class="cursor-pointer" ng-click="reFresh($index)">{{item}}</a>
+			<span ng-hide="$index == currPath.length-1"></span>
+		</span>
+		
+		<span ng-show="$index == currPath.length-1" ng-bind="item"></span>
+		
+	</span>
+	<!-- <span style="margin-left:10px; font-size: 12px; color: red;">单个文件大小在500M之内</span> -->
+</div>
+
+<div class="file-content">
+    <div class="file-header">
+    	<div class="fl no-select file-title file-name" ng-click="sort('name')">
+    		<span class="checkBox file-checkbox"><input type="checkbox" class="input_check" id="ckAlFile"   ng-model="isSelectAll" ng-click="selectAll(isSelectAll)"><label for="ckAlFile"></label></span>
+	 		<span>文件名</span>
+	 		<fun-Icon id="xiangshang" style="color: #70C5CA;float: none;" ng-show="sortBy=='name'&&sortParam.name =='asc'"></fun-Icon>
+	 		<fun-Icon id="xiangxia" style="color: #70C5CA;float: none;" ng-show="sortBy=='name'&&sortParam.name =='desc'"></fun-Icon>
+    	</div>
+    	<div class="fl no-select file-title file-size" ng-click="sort('size')">
+    		大小
+    		<fun-Icon id="xiangshang" style="color: #70C5CA;float: none;" ng-show="sortBy=='size'&&sortParam.size =='asc'"></fun-Icon>
+	 		<fun-Icon id="xiangxia" style="color: #70C5CA;float: none;" ng-show="sortBy=='size'&&sortParam.size =='desc'"></fun-Icon>
+    	</div>
+    	<div class="fl no-select file-title file-updateTime" ng-click="sort('time')">
+    		修改日期
+    		<fun-Icon id="xiangshang" style="color: #70C5CA;float: none;" ng-show="sortBy=='time'&&sortParam.time=='asc'"></fun-Icon>
+	 		<fun-Icon id="xiangxia" style="color: #70C5CA;float: none;" ng-show="sortBy=='time'&&sortParam.time=='desc'"></fun-Icon>
+    	</div>
+    </div>
+    <div class="file-details" ng-show="isAddDir == true">
+    	<div class="fl file-name">
+    		<fun-Icon id="wenjianjia" class="file-icon add-dir-fileType"></fun-Icon>
+    		<input class="add-dir-input" placeholder="文件名" ng-model="newDirName"/>
+    		<fun-Icon id="gou" class="new-dir-icon" ng-click="newDirectory(newDirName)"></fun-Icon>
+    		<fun-Icon id="cha1" class="new-dir-icon" ng-click="isAddDir = false"></fun-Icon>
+    	</div>
+    	<div class="fl file-size">...</div>
+    	<div class="fl file-updateTime">...</div>
+    </div>
+    <div class="file-details" ng-repeat=" item in files" ng-init="isShow = false;showItems = false;" ng-mouseover="isShow = true" ng-mouseleave="isShow = false;showItems = false;"  ng-class="{'file-active':selected[$index]=='true'}">
+    	<div class="fl file-name">
+    		<span class="checkBox file-checkbox"><input type="checkbox" class="input_check" id="{{'check'+$index}}" ng-click="checkSelected()" ng-model="selected[$index]">
+    			<label for="{{'check'+$index}}"></label>
+			</span>
+            <fun-Icon id="{{item.name | fileType:item.directory}}" class="file-icon" ng-click="goDeep(item)"></fun-Icon>
+            
+            <span class="file-name-text" ng-bind="item.name" ng-click="goDeep(item)"></span>
+            <div class="file-option" ng-show="isShow">
+            	<!--<fun-Icon id="fenxiang" class="file-option-icon"></fun-Icon>-->
+            	<fun-Icon ng-show="fileDoldCode!='0'" id="xiazai" class="file-option-icon" ng-show="item.directory != true" ng-click="download(item)"></fun-Icon>
+            	<fun-Icon id="gengduo" class="file-option-icon" ng-click="showItems = true" ng-show="operation"></fun-Icon>
+            	<div class="file-option-item" ng-show="isShow && showItems">
+            		<div class="options-item" ng-show="fileMoveCode!='0'" ng-click="moveTo(item,'move')">移动到</div>
+            		<div class="options-item" ng-show="fileMoveCode!='0'" ng-click="moveTo(item,'copy')">复制到</div>
+            		<div class="options-item" ng-show="fileRenameCode!='0'" ng-click="Rename(item)">重命名</div>
+            		<div class="options-item" ng-show="!showDelteBtn && fileDelCode != 0" ng-click="deleteFile(item)">删除</div>
+            	</div>
+            </div>
+    	</div>
+    	<div class="fl file-size">{{item.size | fileSize}}</div>
+    	<div class="fl file-updateTime">{{item.updatetime |date:'yyyy-MM-dd HH:mm:ss'}}</div>
+    </div>
+    <!--列表为空时的显示-->
+  
+  	<div class="file-empty-wrap" ng-show="files== undefined">
+    	<img src="assets/images/empty.png" />
+    	<p>该文件夹为空，您可以使用上传功能上传文件</p>
+    </div>
+</div>
+</div>

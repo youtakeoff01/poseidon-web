@@ -1,0 +1,87 @@
+<dialog-Template>
+    <form action="">
+        <div class="add-wrap">
+            <div class="mb15">
+                <ng-form name="minForm">
+                    <div class="dialog-text" ><span class="must-before">分：</span></div>
+                    <input class="form-control" style="width:54%;" 
+                    type="text" 
+                    name="min" 
+                    ng-model="timetoBehind.min"
+                    ng-disabled="disable"
+                    />
+                    <!-- ng-pattern="/^[0-9*/]*$/" -->
+                    <!-- ng-pattern= "/^(\*\/)[1-5][\d]$|^(\*\/)[\d]$|^[1-5][\d]$|^[\d]$/" -->
+                    <p ng-show="minForm.$invalid && minForm.$dirty" style="margin-left:10px; font-size: 12px; color: red;">请填写必填项</p>
+                </ng-form>
+            </div>
+            <div class="mb15">
+                <ng-form name="hoursForm">
+                    <div class="dialog-text"><span class="must-before">时：</span></div>
+                    <input class="form-control" style="width:54%;" 
+                        type="text" 
+                        name="hours" 
+                        ng-model="timetoBehind.houre" 
+                        ng-disabled="disable"
+                        />
+                        <!-- ng-pattern= "/^(\*\/)1[\d]$|^(\*\/)2[0-4]$|^(\*\/)[\d]$|^1[\d]$|2[0-4]$|^[\d]$/" -->
+                    <p ng-show="hoursForm.$invalid && hoursForm.$dirty" style="margin-left:10px; font-size: 12px; color: red;">请填写必填项</p>
+                </ng-form>
+            </div>
+            <div class="mb15">
+                <div class="dialog-text"><span>日/月：</span></div>
+                <input class="form-control" type="text" name="dayOfMonth" placeholder="?" ng-model="timetoBehind.dayOfMonth" style="width:54%;" ng-disabled="true"/>
+                <!-- <span class="must-before" style="margin-left:10px; font-size: 12px;"> 暂不支持 </span> -->
+            </div>
+            <div class="mb15">
+                <ng-form name="monthForm">
+                    <div class="dialog-text"><span class="must-before">月：</span></div>
+                    <input class="form-control" style="width:54%;"
+                        type="text"
+                        name="month" 
+                        ng-model="timetoBehind.month"
+                        ng-disabled="disable"
+                        />
+                        <!-- ng-pattern="/^(\*\/)[1][0-2]$|^(\*\/)[\d]$|^[1][1-2]$|^[\d]$/" -->
+                    <p ng-show="monthForm.$invalid && monthForm.$dirty" style="margin-left:10px; font-size: 12px; color: red;">请填写必填项</p>
+                </ng-form>
+            </div>
+            <div class="mb15">
+                <ng-form name="dayOfWeakForm">
+                    <div class="dialog-text"><span class="must-before">日/周：</span></div>
+                    <input class="form-control" type="text" style="width:54%;"
+                        name="dayOfWeak" 
+                        ng-model="timetoBehind.week" 
+                        ng-disabled="disable"
+                        />
+                        <!-- ng-pattern="/^(\*\/)[1-7]$|^[1-7]$|^[\d]$/" -->
+                    <p ng-show="dayOfWeakForm.$invalid && dayOfWeakForm.$dirty"  style="margin-left:10px; font-size: 12px; color: red;">请填写必填项</p></span>
+                </ng-form>
+            </div>
+            <div class="mb15 text-timer">
+                <div class="dialog-text"><span>定时器：</span></div>
+                <div class="form-control dialog-input" ng-model='timetoBehind.timeText' style="width:54%;">{{  0+' '+timetoBehind.min+' '+timetoBehind.houre+' '+'?'+' '+timetoBehind.month+' '+timetoBehind.week }}</div>
+                <fun-icon-title title="取消定时器" id="del-round" ng-click="removeTimer()" class="cancelTimer"></fun-icon-title>
+            </div>
+    
+            <div class="mb15">
+                <div class="dialog-text "><span>邮件通知：</span></div>
+                <div class="checkboxDivEmial">
+                    <input type="radio" value="0" ng-model="emailInfo" ng-click="changepart(emailInfo)"/>
+                    <span class="paadingall">是</span>
+                    <input type="radio" value="1" ng-model="emailInfo" ng-click="changepart(emailInfo)"/>
+                    <span class="paadingall">否</span>
+                </div>
+            </div>
+    
+            <div class="mb15" ng-show="emailInfo=='0'">
+                <div class="dialog-text"><span>收件人：</span></div>
+                <input class="form-control" type="text" style="width:54%;"
+                    name="reportRule" 
+                    ng-model="timetoBehind.RuleName" 
+                    placeholder="多个收件人请用英文' ; '隔开"
+                    />
+            </div>
+        </div>
+    </form>
+</dialog-Template>

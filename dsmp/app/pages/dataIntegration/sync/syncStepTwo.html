@@ -1,0 +1,50 @@
+<form class="content" ng-controller="syncStepTwoCtrl">
+	<div class="mb15">
+        <div class="dialog-text "><span class="must-before">数据源类型：</span></div>
+        
+        <ui-select class="dialog-input" ng-model="dataType" ng-change="changeType(dataType)">
+            <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+            <ui-select-choices repeat="item in dataSourceType | filter: $select.search">
+                <span ng-bind-html="item.name | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>  
+        <!-- <select class="form-control dialog-input" placeholder="--请选择--" ng-model="dataType" ng-change="changeType(dataType)">
+            <option>JDBC</option>
+            <option>FILE</option>
+        </select> -->
+
+	</div>
+
+    <div class="mb15">
+        <div class="dialog-text "><span class="must-before">数据源：</span></div>
+
+        <ui-select class="dialog-input" ng-model="syncInfoData.dataSource" ng-change="changeDataTable(syncInfoData.dataSource)">
+            <ui-select-match placeholder="请选择">{{$select.selected.srcName}}</ui-select-match>
+            <ui-select-choices repeat="item in dataBaseData | filter: $select.search">
+                <span ng-bind-html="item.srcName | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>  
+    </div>
+
+    <div class="mb15">
+        <div class="dialog-text "><span class="must-before">数据表：</span></div>
+        <ui-select class="dialog-input" ng-model="syncInfoData.dataTable" ng-change="getTablesDescript()">
+            <ui-select-match placeholder="请选择">{{$select.selected.tableName}}</ui-select-match>
+            <ui-select-choices repeat="item in dataTableData | filter: $select.search">
+                <span ng-bind-html="item.tableName | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+
+    <div class="mb15" >
+        <div class="dialog-text"><span class="must-before">自定义条件：</span></div>
+        <textarea class="form-control dialog-textarea" ng-model="syncInfoData.coustom"></textarea>
+    </div>
+
+
+	<div class="mb15">
+		<input type="submit" class="previous-step dialog-ok page-ml " wz-previous value="上一步" />
+		<input type="submit" class="next-step  dialog-ok  form-control " ng-click="getNextData()" value="下一步"  />
+	</div>
+
+</form>

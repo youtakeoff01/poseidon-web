@@ -1,0 +1,17 @@
+.sysSet-wrap .funPanel-title {
+    background: #F7F8FC !important;
+}
+
+.sysSet-text {
+    display: inline-block;
+    text-align: left;
+    width: 150px;
+}
+
+.sysSet-text:before {
+    content: "*";
+    color: #F56461;
+    position: absolute;
+    left: -1px;
+    margin-left: 10px;
+}

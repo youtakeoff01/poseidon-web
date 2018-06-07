@@ -1,0 +1,36 @@
+.sync-wrap{
+    background: #FFFFFF !important;
+}
+.checkBox {
+    position: relative;
+}
+.input_check {
+    position: absolute;
+    visibility: hidden;
+}
+.input_check+label {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #DDDDDD;
+    background: white;
+}
+.input_check:checked+label:after {
+    content: "";
+    position: absolute;
+    left: 2px;
+    bottom: 6px;
+    width: 13px;
+    height: 7px;
+    border: 2px solid #0099FF;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    -ms-transform: rotate(-60deg);
+    -moz-transform: rotate(-60deg);
+    -webkit-transform: rotate(-60deg);
+    transform: rotate(-45deg);
+}
+
+.span_pointer{
+    cursor: pointer;
+}

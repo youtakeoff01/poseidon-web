@@ -1,0 +1,158 @@
+<div>
+    <div class="menu-wrap-mini no-select" ng-style="menu_wrap">
+        <ul class="nav" id="accordion">
+            <li class="menu-close" ng-click="folding()" >
+                <img src="assets/images/close.png">
+            </li>
+            <li class="menu-item" ng-if="consoleCode!='0'" ng-click="addMenuTabs('控制台','console')" ng-mouseenter="oneTip($event, '控制台')" ng-mouseleave="tipDisappear()">
+                <a ng-if="consoleCode!='0'" >
+                    <fun-Icon id="kongzhitai"></fun-Icon>
+                </a>
+            </li>
+
+            <li class="menu-item" ng-if="IntegraCode!='0'" ng-init="IntegraActive = true;" ng-mouseenter="oneTip($event, '数据集成')" ng-mouseleave="tipDisappear()">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseIntegra" ng-click="IntegraActive = !IntegraActive;" >
+                    <fun-Icon id="shuju"></fun-Icon>
+                </a>
+                <ul id="collapseIntegra" class="nav collapse">
+                    <li class="menu-item-children-mini" ng-if="dataSourceCode!='0'" ng-click="addMenuTabs('数据源管理','source')" ng-mouseenter="twoTip($event, '数据源管理')" ng-mouseleave="twoTipDisappear()">
+                        <a ui-sref-active="menu-item-active" >
+                            <img src="assets/images/round.png">
+                        </a>
+                    </li>
+                    <li class="menu-item-children-mini" ng-if="dataSyncCode!='0'" ng-click="addMenuTabs('数据同步','sync')" ng-mouseenter="twoTip($event, '数据同步')" ng-mouseleave="twoTipDisappear()">
+                        <a ui-sref-active="menu-item-active" >
+                            <img src="assets/images/round.png">
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item" ng-if="developCode!='0'" ng-init="developActive = true;" ng-mouseenter="oneTip($event, '数据开发')" ng-mouseleave="tipDisappear()">
+                <a data-toggle="collapse" data-parent="#accordion" ng-click="developActive=!developActive" href="#collapsdevelop">
+                    <fun-Icon id="yuanshuju"></fun-Icon>
+                </a>
+                <ul id="collapsdevelop" class="nav collapse">
+                    <li class="menu-item-children-mini" ng-if="searchCode!='0'" ng-click="addMenuTabs('数据加工','search')" ng-mouseenter="twoTip($event, '数据加工')" ng-mouseleave="twoTipDisappear()">
+                        <a ui-sref-active="menu-item-active" >
+                            <img src="assets/images/round.png">
+                        </a>
+                    </li>
+                    <li class="menu-item-children-mini" ng-if="tasksubmitCode!='0'" ng-click="addMenuTabs('提交任务','submitTask')" ng-mouseenter="twoTip($event, '提交任务')" ng-mouseleave="twoTipDisappear()">
+                        <a ui-sref-active="menu-item-active" >
+                            <img src="assets/images/round.png">
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item" ng-if="datamanagerCode!='0'" ng-init="datamanagerActive = true;" ng-mouseenter="oneTip($event, '数据管理')" ng-mouseleave="tipDisappear()">
+                <a data-toggle="collapse" data-parent="#accordion" ng-click="datamanagerActive=!datamanagerActive" href="#collapsedatamanager">
+                    <fun-Icon id="shujukaifa"></fun-Icon>
+                </a>
+                <ul id="collapsedatamanager" class="nav collapse">
+                    <li class="menu-item-children-mini" ng-if="permissionCode!='0'" ng-click="addMenuTabs('数据权限','permission')" ng-mouseenter="twoTip($event, '数据权限')" ng-mouseleave="twoTipDisappear()">
+                        <a ui-sref-active="menu-item-active" >
+                            <img src="assets/images/round.png">
+                        </a> 
+                    </li>
+                    <li class="menu-item-children-mini" ng-if="tableCode!='0'" ng-click="addMenuTabs('库表管理','table')" ng-mouseenter="twoTip($event, '库表管理')" ng-mouseleave="twoTipDisappear()">
+                        <a ui-sref-active="menu-item-active" >
+                            <img src="assets/images/round.png">
+                        </a>
+                    </li>
+                    <li class="menu-item-children-mini" ng-if="fileCode!='0'" ng-click="addMenuTabs('云文件','file')" ng-mouseenter="twoTip($event, '云文件')" ng-mouseleave="twoTipDisappear()">
+                        <a ui-sref-active="menu-item-active" >
+                            <img src="assets/images/round.png">
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item" ng-if="centerCode!='0'" ng-init="centerActive = true;" ng-mouseenter="oneTip($event, '运维中心')" ng-mouseleave="tipDisappear()">
+                <a data-toggle="collapse" data-parent="#accordion" ng-click="centerActive=!centerActive" href="#collapscenter">
+                    <fun-Icon id="tubiao-"></fun-Icon>
+                </a>
+                <ul id="collapscenter" class="nav collapse">
+                    <li class="menu-item-children-mini" ng-if="noticeCode!='0'" ng-click="addMenuTabs('通知渠道','ditch')" ng-mouseenter="twoTip($event, '通知渠道')" ng-mouseleave="twoTipDisappear()">
+                        <a ui-sref-active="menu-item-active">
+                            <img src="assets/images/round.png">
+                        </a>
+                    </li>
+                    <li class="menu-item-children-mini" ng-if="customCode!='0'" ng-click="addMenuTabs('自定义通知','custom')" ng-mouseenter="twoTip($event, '自定义通知')" ng-mouseleave="twoTipDisappear()"> 
+                        <a ui-sref-active="menu-item-active">
+                            <img src="assets/images/round.png">
+                        </a>
+                    </li>
+                    <li class="menu-item-children-mini"  ng-if="taskCode!='0'" ng-click="addMenuTabs('任务管理','operManage')" ng-mouseenter="twoTip($event, '任务管理')" ng-mouseleave="twoTipDisappear()">
+                        <a ui-sref-active="menu-item-active">
+                            <img src="assets/images/round.png">
+                        </a>
+                    </li>
+                    <li class="menu-item-children-mini" ng-if="caseCode!='0'" ng-click="addMenuTabs('任务运维','operCase')" ng-mouseenter="twoTip($event, '任务运维')" ng-mouseleave="twoTipDisappear()">
+                        <a ui-sref-active="menu-item-active">
+                            <img src="assets/images/round.png">
+                        </a>
+                    </li>
+                    <li class="menu-item-children-mini" ng-if="ruleCode!='0'" ng-click="addMenuTabs('规则管理','ruleManage')" ng-mouseenter="twoTip($event, '规则管理')" ng-mouseleave="twoTipDisappear()">
+                        <a ui-sref-active="menu-item-active">
+                            <img src="assets/images/round.png">
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item" ng-if="platformCode!='0'" ng-init="platformActive = true;" ng-mouseenter="oneTip($event, '平台管理')" ng-mouseleave="tipDisappear()">
+                <a data-toggle="collapse" data-parent="#accordion" ng-click="platformActive=!platformActive" href="#collapseplatform">
+                    <fun-Icon id="system"></fun-Icon>
+                </a>
+                <ul id="collapseplatform" class="nav collapse">
+                    <li class="menu-item-children-mini" ng-if="syLogCode!='0'" ng-click="addMenuTabs('系统日志','log')" ng-mouseenter="twoTip($event, '系统日志')" ng-mouseleave="twoTipDisappear()">
+                        <a ui-sref-active="menu-item-active">
+                            <img src="assets/images/round.png">
+                        </a>
+                    </li>
+                    <li class="menu-item-children-mini" ng-if="sySetCode!='0'" ng-click="addMenuTabs('系统设置','sysSet')" ng-mouseenter="twoTip($event, '系统设置')" ng-mouseleave="twoTipDisappear()">
+                        <a  ui-sref-active="menu-item-active">
+                            <img src="assets/images/round.png">
+                        </a>
+                    </li>
+                    <li class="menu-item-children-mini" ng-if="userCode!='0'" ng-click="addMenuTabs('用户管理','userManage')" ng-mouseenter="twoTip($event, '用户管理')" ng-mouseleave="twoTipDisappear()">
+                        <a ui-sref-active="menu-item-active">
+                            <img src="assets/images/round.png">
+                        </a>
+                    </li>
+                    <li class="menu-item-children-mini" ng-if="myapplyCode!=0" ng-click="addMenuTabs('我的申请','myapply')" ng-mouseenter="twoTip($event, '我的申请')" ng-mouseleave="twoTipDisappear()">
+                        <a ui-sref-active="menu-item-active">
+                            <img src="assets/images/round.png">
+                        </a>
+                    </li>
+                    <li class="menu-item-children-mini" ng-if="myapproval!=0" ng-click="addMenuTabs('我的审批','myapproval')" ng-mouseenter="twoTip($event, '我的审批')" ng-mouseleave="twoTipDisappear()">
+                        <a ui-sref-active="menu-item-active">
+                            <img src="assets/images/round.png">
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item" ng-if="artiCode!='0'" ng-init="artiActive = true;" ng-mouseenter="oneTip($event, '人工智能')" ng-mouseleave="tipDisappear()">
+                <a data-toggle="collapse" data-parent="#accordion" ng-click="artiActive=!artiActive" href="#collapsarti">
+                    <fun-Icon id="rengongzhineng"></fun-Icon>
+                </a>
+                <ul id="collapsarti" class="nav collapse">
+                    <li class="menu-item-children-mini" ng-if="machineCode!='0'" ng-click="addMenuTabs('组件','learning')" ng-mouseenter="twoTip($event, '组件')" ng-mouseleave="twoTipDisappear()">
+                        <a  ui-sref-active="menu-item-active">
+                            <img src="assets/images/round.png">
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!--<li class="menu-item" ng-mouseenter="oneTip($event, '帮助文档')" ng-mouseleave="tipDisappear()">
+                <a ng-click="openFile()">
+                    <fun-Icon id="help"></fun-Icon>
+                </a>
+            </li>-->
+        </ul>
+    </div>
+</div>

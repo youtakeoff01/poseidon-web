@@ -1,0 +1,28 @@
+<form class="content">
+	<div class="mb15">
+		<div class="dialog-span">
+			<span class="must-before">请确认以下数据同步任务的信息，确认无误后点击保存提交。</span>
+			<div class="line_dashed"></div>
+		</div>
+	</div>
+
+	<div class="mb15">
+		<div class="dialog-span">
+			<span>任务名称:<font class="color-blue">{{syncInfoData.jobName}}</font></span>
+		</div>
+	</div>
+	<div class="mb15">
+		<div class="dialog-span">
+			<span>从数据源
+				<font class="color-blue">{{syncInfoData.dataSource.srcName}}</font>
+					同步到目标源
+				<font class="color-blue">{{syncInfoData.targetTable}}.{{ syncInfoData.dsmpSource.srcName }}</font>
+			</span>
+		</div>
+	</div>
+
+	<div class="mb15">
+		<input type="submit" class="previous-step  dialog-ok page-ml-m " wz-previous value="上一步" />
+		<input class="next-step dialog-ok form-control " type="submit"  wz-next value="保存" ng-click="syncSave()" />
+	</div>
+</form>

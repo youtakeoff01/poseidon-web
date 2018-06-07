@@ -1,0 +1,46 @@
+
+.dialog-header {
+    border-bottom: 1px solid #DDDDDD;
+    font-size: 16px;
+    color: rgba(0,0,0,0.6);
+    padding: 10px 20px 10px 20px;
+}
+.dialog-main {
+    padding: 20px 20px 20px 20px;
+}
+.dialog-bar {
+    text-align: center;
+    padding-bottom: 30px;
+}
+.dialog-icon {
+    color: #F7635F;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    width: 25px;
+    height: 25px;
+}
+.dialog-btn { 
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 2px;
+    color: #FFFFFF;
+    
+}
+.dialog-ok {
+    background-color: #64AADD;
+    color: #FFFFFF;
+}
+.dialog-cancel {
+    background-color: #B6B7B9;
+}
+.dialog-warn-icon {
+    color: #E85335;
+    width: 70px !important;
+    height: 70px !important;
+    margin-bottom: 20px;
+}
+.dialog-warn-message {
+    color: rgba(0,0,0,0.5);
+}

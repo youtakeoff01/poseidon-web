@@ -1,0 +1,73 @@
+<!-- 我的审批 -->
+<div ng-controller="approvalCtrl">
+    <div class="tablist-details">
+        <div class="position-relative query-table">
+            <div class="tablist-bar">
+                <div class="tablist-search">
+                    <div class="tablist-search-formControl">
+                        <span>审批状态</span>
+                        <ui-select class="mr10 tablist-search-select" ng-model="applyselect" ng-change="dataSearch(applyselect)">
+                            <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices repeat="item in applyState | filter: $select.search">
+                                <span ng-bind-html="item.name | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                   <div class="tablist-search-formControl">
+                       <span>学生AD</span>
+                       <div class="display-block hand-border input-padding input-h input-w input-search">
+                           <input class="hand-input" placeholder="请输入学生AD" ng-model="studentAD"/>
+                           <fun-Icon id="msnui-find" ng-click="stuSearch(studentAD)" class="search-icon"></fun-Icon>
+                       </div>
+                   </div>
+                    <div class="tablist-search-formControl" style="margin-left: 10px">
+                        <span>申请人</span>
+                        <div class="display-block hand-border input-padding input-h input-w input-search">
+                            <input class="hand-input" placeholder="请输入申请人AD" ng-model="applyName"/>
+                            <fun-Icon id="msnui-find" ng-click="applySearch(applyName)" class="search-icon"></fun-Icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table ng-table="approvalCtrlTableParams" class="table table-striped tablist">
+                <tr ng-repeat="item in queryData">
+                    <td data-title=" '序号' ">{{ $index+1}}</td>
+                    <td data-title=" '申请人AD' ">
+                        {{item.apperyer.userName}}
+                    </td>
+                    <td data-title=" '审批人' ">{{item.approvals[0].approvaler.userName}}</td>
+                    <td data-title="'选择学生'" style="width: 10%">
+                         <span ng-repeat="student in item.students">
+                            {{student.adNumber}}
+                            <span ng-show="$index+1 != item.students.length">,</span>
+                         </span>
+                    </td>
+                    <td data-title="'提交时间'">{{item.createDate}}</td>
+                    <td data-title="'有效期'">{{item.vld}}</td>
+                    <td data-title="'申请理由'">
+                        <div ng-show="!showMore" class="reson-text">
+                            {{item.applyReason | textLimit:30}}
+                            <button class="caret-btn" ng-click="showMore = !showMore" title="展开">
+                                <span class="caret-btn-bottom" ></span>
+                            </button>
+                        </div>
+                        <div ng-show="showMore" class="reson-text">
+                            {{item.applyReason}}
+                            <button class="caret-btn" ng-click="showMore = !showMore" title="收起">
+                                <span class="caret-btn-top"></span>
+                            </button>
+                        </div>
+                    </td>
+                    <td data-title="'审批状态'">{{item.approvals[0].approvalStatus | applyStatus}}</td>
+                    <td data-title="'审批时间'">{{item.approvals[0].approvalTime }}</td>
+                    <td data-title="'审批动作'">
+                        <div ng-if="item.approvals[0].approvalStatus == 0">
+                            <fun-icon-title title="通过" id="tongguo" ng-click="agreed(item)"></fun-icon-title>&nbsp;
+                            <fun-icon-title title="拒绝" id="jujue" ng-click="refuse(item)"></fun-icon-title>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

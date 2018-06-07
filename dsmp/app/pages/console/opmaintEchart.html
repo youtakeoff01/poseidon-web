@@ -1,0 +1,171 @@
+<!--任务运维图表页面-->
+<div ng-controller="opmaintEchartCtrl" class="query-wrap">
+    <div class="tablist-details">
+        <div class="pic">
+            <p>任务执行概览</p>
+            
+            <div class="col-md-5 col-sm-5 pie">
+                <div style="border-right: 1px dashed #e6f0f8; margin-top: 4px; ">
+                    <ng-echarts style="width: 400px; height: 240px; position: absolute;"ec-config="dataConfig" ec-option="dataOption"></ng-echarts>
+                </div>
+            </div>
+            <div class="col-md-7 col-sm-7">
+                <ul class="nav mission">
+                    <li ng-repeat="item in missionType" ng-class="{'background-blue': item.value}" ng-click="changeType($index)">{{ item.name }}</li>
+                </ul>
+                <div>
+                    <ng-echarts style="width: 550px; height: 250px; position: absolute; left: 10px; top: 30px" ec-config="systemConfigAll" ec-option="systemOptionAll"></ng-echarts>
+                </div>
+            </div>
+        </div>
+        <div class="rank-table">
+            <div class="col-md-6 col-sm-6 length">
+                <p>任务执行时长</p>
+                <table ng-table="tableParamsOne" class="table tablist">
+                    <thead>
+                        <tr class="bg-light">
+                            <th style="width: 30%">任务名称</th>
+                            <th style="width: 20%">负责人</th>
+                            <th style="width: 25%">任务类型</th>
+                            <th style="width: 25%">执行时长</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align: left">
+                        <tr ng-repeat="item in timeSort" ng-show="$index < 10 && timePgOne == true">
+                            <td ng-bind="item.taskName"></td>
+                            <td ng-bind="item.taskAccount"></td>
+                            <td ng-bind="item.execType"></td>
+                            <td ng-bind="item.execTime"></td>
+                        </tr>
+                        <tr ng-repeat="item in timeSort" ng-show="$index > 9 && timePgTwo == true">
+                            <td ng-bind="item.taskName"></td>
+                            <td ng-bind="item.taskAccount"></td>
+                            <td ng-bind="item.execType"></td>
+                            <td ng-bind="item.execTime"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="pageTwo" ng-click="timePgTwo = true; timePgOne = false" ng-class="{pageBack: timePgTwo}" ng-show="total>10">2</div>
+                <div class="pageOne" ng-click="timePgTwo = false; timePgOne = true" ng-class="{pageBack: timePgOne}" ng-show="total>0">1</div>
+            </div>
+            <div class="col-md-6 col-sm-6 rank">
+                <p>近一个月出错排行</p> 
+                <table ng-table="tableParamsTwo" class="table tablist">
+                    <thead>
+                        <tr class="bg-light">
+                            <th style="width: 30%">任务名称</th>
+                            <th style="width: 20%">负责人</th>
+                            <th style="width: 25%">任务类型</th>
+                            <th style="width: 25%">出错次数</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align: left">
+                        <tr ng-repeat="item in failuresOrder" ng-show="$index < 10 && errorPgOne == true">
+                            <td ng-bind="item.taskName"></td>
+                            <td ng-bind="item.taskAccount"></td>
+                            <td ng-bind="item.execType"></td>
+                            <td ng-bind="item.errorCount"></td>
+                        </tr>
+                        <tr ng-repeat="item in failuresOrder" ng-show="$index > 9 && errorPgTwo == true">
+                            <td ng-bind="item.taskName"></td>
+                            <td ng-bind="item.taskAccount"></td>
+                            <td ng-bind="item.execType"></td>
+                            <td ng-bind="item.errorCount"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="pageTwo" ng-click="errorPgTwo = true; errorPgOne = false" ng-class="{pageBack: errorPgTwo}" ng-show="errorTotal>10">2</div>
+                <div class="pageOne" ng-click="errorPgTwo = false; errorPgOne = true" ng-class="{pageBack: errorPgOne}" ng-show="errorTotal>0">1</div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .pic{
+        border: 1px solid #e6f0f8; 
+        height: 340px; 
+    }
+    .pic .pie{
+        padding: 10px 10px;
+    }
+    .pic>p{
+        padding-bottom: 10px;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 10px;
+        font-size: 16px; 
+        font-weight: bold;
+        border-bottom: 1px solid #e6f0f8;
+    }
+    .mission{
+        padding-top: 10px;
+        margin-bottom: -10px;
+    }
+    .mission>li{
+        float: left;
+        padding: 2px 8px;
+        border-radius: 2px;
+        color: #999;
+        cursor: pointer;
+    }
+    .mission li.background-blue{
+        background: #00c1de;
+        color: #fff;
+    }
+    .rank-table{
+        margin-top: 20px;
+    }
+    .rank-table:after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+    .rank-table>div{
+        border: 1px solid #e6f0f8; 
+    }
+    .bg-light{
+        background: #f8f8f8;
+    }
+    .length{
+        margin-right: 2%;
+    }
+    .length:after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+    .length>p, .rank>p{
+        padding-top: 10px;
+        font-size: 16px; 
+        font-weight: bold;
+    }
+   
+    .rank tbody>tr{
+        height: 10px;
+    }
+    .pageTwo {
+        margin-bottom: 10px;
+        text-align: center;
+        line-height: 20px;
+        float: right;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #eee;
+        color: #428bca;
+    }
+    .pageOne {
+        margin-bottom: 10px;
+        margin-right: 10px;
+        text-align: center;
+        line-height: 20px;
+        float: right;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #eee;
+        color: #428bca;
+    }
+    .pageBack {
+        color: #fff;
+        background: #428bca;
+    }
+</style>

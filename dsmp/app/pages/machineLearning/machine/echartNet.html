@@ -1,0 +1,23 @@
+<dialog-Template>
+	<div style="height: 110px;">
+	<div class="mb10">
+		<span class="span_net bg_gray">总记录数</span>
+		<span class="span_net bg_white">{{netData.rows_count}}</span>
+	</div>
+
+	<div class="mb10">
+		<span class="span_net bg_gray">ComputeCost指标</span>
+		<span class="span_net bg_white">{{netData.sum_all}}</span>
+	</div>
+
+	<div class="mb10">
+		<span class="span_net bg_gray">聚类中心数</span>
+		<span class="span_net bg_white">{{netData.centers_count}}</span>
+	</div>
+	</div>
+
+	<fun-panel>
+		<ng-echarts ng-if="netData.reportType==1" style="width: 560px; height: 400px;  position: relative;" ec-config="netConfig" ec-option="netOption"></ng-echarts>
+	</fun-panel>
+
+</dialog-Template>

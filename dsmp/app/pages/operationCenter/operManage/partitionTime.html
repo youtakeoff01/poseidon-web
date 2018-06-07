@@ -1,0 +1,52 @@
+<dialog-Template>
+        <form action="">
+            <div class="add-wrap">
+                <div class="mb15">
+                    <ng-form name="partitionForm">
+                        <div class="dialog-text" ><span class="must-before">任务名称：</span></div>
+                        <input class="form-control" style="width:54%;" 
+                            type="text" 
+                            name="name" 
+                            ng-model="partition.name"
+                            ng-disabled="true"  
+                        />
+                    </ng-form>
+                </div>
+                <div class="mb15">
+                    <ng-form name="minForm">
+                        <div class="dialog-text" ><span class="must-before">分区字段：</span></div>
+                        <input class="form-control" style="width:54%;" 
+                            type="text" 
+                            name="field" 
+                            ng-model="partition.field" 
+                            ng-disabled="true" 
+                        />
+                    </ng-form>
+                </div>
+                <!-- 时间日期控件 -->
+                <div class="mb15">
+                    <div class="dialog-text" ><span>开始时间：</span></div>
+                    <input class="datainp" id="dateOne" type="text" placeholder=" 请选择" readonly>
+                    <input type="button" onClick="jeDate({dateCell:'#dateOne',isTime:true,format:'YYYY-MM-DD 00:00:00'})" value="打开">
+                </div>
+                <div class="mb15">
+                    <div class="dialog-text" ><span>结束时间：</span></div>
+                    <input class="datainp" id="dateTwo" type="text" placeholder=" 请选择" readonly>
+                    <input type="button" onClick="jeDate({dateCell:'#dateTwo',isTime:true,format:'YYYY-MM-DD hh:mm:ss'})" value="打开">
+                </div>
+
+                <div class="mb15">
+                    <ng-form name="taskAndForm">
+                        <div class="dialog-text"><span class="must-before">任务并行度：</span></div>
+                        <input class="form-control" style="width:54%;" 
+                            type="text" 
+                            name="field" 
+                            ng-model="partition.taskand" 
+                            ng-pattern= "/^[1-9][0-9]*$/"
+                        />
+                        <p ng-show="taskAndForm.$invalid && taskAndForm.$dirty" style="margin-left:10px; font-size: 12px; color: red;">请输入除0之外的任何整数</p>
+                    </ng-form>
+                </div>
+            </div>
+        </form>
+</dialog-Template>

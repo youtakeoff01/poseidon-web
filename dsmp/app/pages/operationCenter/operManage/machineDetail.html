@@ -1,0 +1,163 @@
+<!--机器学习页面-->
+<div class="query-wrap" ng-controller="machineDetailCtrl">
+	<div class="titleDiv">机器学习详情：{{machineName}}</div>
+	<div class="leftMachineDiv" ng-class="leftHeightDiv">
+		<ul class="nav">
+			<li ng-repeat="firstRow in tablesData">
+				<a data-toggle="collapse" data-parent="#accordion" href="#{{firstRow.comName}}" ng-if="firstRow.isleaf == 0">
+					<fun-Icon id="shuju"></fun-Icon>
+					<span class="ml20">{{firstRow.comName}}</span>
+					<fun-Icon id="xia" class="fr"></fun-Icon>
+				</a>
+				<a ng-click="addCustomNode(firstRow)" ng-if="firstRow.isleaf == 1">
+					<fun-Icon id="shuju"></fun-Icon>
+					<span class="ml20">{{firstRow.comName}}</span>
+					<fun-Icon id="xia" class="fr"></fun-Icon>
+				</a>
+
+				<ul id="{{firstRow.comName}}" class="nav collapse second_nav">
+					<li ng-repeat="secondRow in firstRow.list">
+						<a data-toggle="collapse" data-parent="#accordion" href="#{{secondRow.comName}}" ng-if="secondRow.isleaf == 0">
+							<span class="ml20">{{secondRow.comName}}</span>
+						</a>
+
+						<a ng-click="addCustomNode(secondRow)" ng-if="secondRow.isleaf == 1">
+							<fun-Icon id="dian" class="fl mar-left"></fun-Icon>
+							<span class="ml20">{{secondRow.comName}}</span>
+
+						</a>
+
+						<ul id="{{secondRow.comName}}" class="nav collapse">
+							<li ng-repeat="threeRow in secondRow.list">
+								<a ng-click="addCustomNode(threeRow)">
+									<fun-Icon id="dian" class="fl"></fun-Icon>
+									<span class="ml20">{{threeRow.comName}}</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+
+				</ul>
+			</li>
+
+			<li>
+				<a data-toggle="collapse" data-parent="#accordion" href="#taskModel1" ng-click="getModelNode()">
+					<fun-Icon id="shuju"></fun-Icon>
+					<span class="ml20">任务模型</span>
+					<fun-Icon id="xia" class="fr"></fun-Icon>
+				</a>
+				<ul id="taskModel1" class="nav collapse second_nav">
+					<li ng-repeat="secondRow in modelData">
+						<a data-toggle="collapse" data-parent="#accordion" href="#{{secondRow.taskName}}">
+							<span class="ml20">{{secondRow.taskName}}</span>
+						</a>
+
+						<ul id="{{secondRow.taskName}}" class="nav collapse">
+							<li ng-repeat="threeRow in secondRow.nameList">
+								<a ng-click="addCustomNode(threeRow)">
+									<fun-Icon id="dian" class="fl"></fun-Icon>
+									<span class="ml20">{{threeRow.comName}}</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+
+				</ul>
+			</li>
+
+		</ul>
+	</div>
+
+	<div class="tab-form-demo mb20 from-tab pd10" ng-class="fromTabDiv">
+		<uib-tabset active="tabDetailActive">
+			<uib-tab ng-repeat="row in allOptionData" ng-show="tempId==row.comNum&&row.comType!=0">
+				<uib-tab-heading >
+					{{row.tabName}}
+				</uib-tab-heading>
+				<div ng-repeat="op in row.list" class="mt15" ng-show="row.comType!=0&&row.comCode!='hiveTable'">
+					<span>{{op.optName}}</span>
+					<span ng-show="op.optNecessary==0" class="color-gray">可选 {{op.optPrompt}}</span>
+					<span ng-show="op.optNecessary!=0" class="color-gray">必选 {{op.optPrompt}}</span>
+					<br>
+
+					<input ng-if="op.optType=='input'" ng-model="op.optDefault" type="text" class="input-control" ng-blur="matchRex(op.optDefault,op.optTypeSupported)"></input>
+
+					<textarea ng-if="op.optType=='textarea'" ng-model="op.optDefault" style="width: 100%;"></textarea>
+
+					<ui-select ng-if="op.optType=='select'" ng-model="op.optSelectDefault">
+						<ui-select-match placeholder="请选择">{{$select.selected.selectV}}</ui-select-match>
+						<ui-select-choices repeat="item in op.optSupported | filter: $select.search">
+							<span ng-bind-html="item.selectV | highlight: $select.search"></span>
+						</ui-select-choices>
+					</ui-select>
+					<div class="span-popur" ng-if="op.optType=='popup'&&op.optDefault!=''" ng-click="openModel(row.comNum,op.optDefault,op.optName)">已选择：{{op.optPopupNum}}个字段</div>
+					<div class="span-popur" ng-if="op.optType=='popup'&&op.optDefault=='' " ng-click="openModel(row.comNum,op.optDefault,op.optName)">选择字段</div>
+				</div>
+				
+				<div class="mt15" ng-show="row.comType!=0&&row.comCode=='hiveTable'">
+					<span>选择库：</span>
+					<span class="color-gray">必选 </span>
+					<br>
+					<ui-select  ng-model="row.dbDefault" ng-change="getdbTable(row.dbDefault)">
+						<ui-select-match placeholder="请选择">{{$select.selected.selectV}}</ui-select-match>
+						<ui-select-choices repeat="item in row.selectDB | filter: $select.search">
+							<span ng-bind-html="item.selectV | highlight: $select.search"></span>
+						</ui-select-choices>
+					</ui-select>
+				</div>
+				<div class="mt15" ng-show="row.comType!=0&&row.comCode=='hiveTable'">
+					<span>选择表：</span>
+					<span class="color-gray">必选 </span>
+					<br>
+
+					<ui-select  ng-model="row.tbDefault">
+						<ui-select-match placeholder="请选择">{{$select.selected.selectV}}</ui-select-match>
+						<ui-select-choices repeat="item in dbTableData | filter: $select.search">
+							<span ng-bind-html="item.selectV | highlight: $select.search"></span>
+						</ui-select-choices>
+					</ui-select>
+				</div>		
+			</uib-tab>
+		</uib-tabset>
+
+	</div>
+
+	<div class="rightMachineDiv" style="background: #FFFFFF;">
+		<div id="c2" ng-class="machineDiv"></div>
+		<div class="mBtnDiv">
+			<button class="btn dialog-ok" ng-click="saveTabClick()">保存
+                </button>
+			<button class="btn dialog-ok" ng-click="openExectue()">运行
+                </button>
+			<input type="text" ng-model="textModel" />
+		</div>
+
+		<div id="menuDetailA">
+			<div class="menu" ng-click="removeMachineNet()">删除</div>
+			<div class="menu" ng-click="updateMachineNet()">编辑</div>
+			<div class="menu" ng-click="searchMachineNet()">查看节点日志</div>
+		</div>
+		<div id="menuDetailB">
+			<div class="menu" ng-click="removeMachineNet()">删除</div>
+			<div class="menu" ng-click="checkMachineNet()">查看数据</div>
+			<div class="menu" ng-click="updateMachineNet()">编辑</div>
+			<div class="menu" ng-click="searchMachineNet()">查看节点日志</div>
+		</div>
+		<div id="menuDetailC">
+			<div class="menu" ng-click="removeMachineNet()">删除</div>
+			<div class="menu" ng-click="reportMachineNet()">评估报告</div>
+			<div class="menu" ng-click="updateMachineNet()">编辑</div>
+			<div class="menu" ng-click="searchMachineNet()">查看节点日志</div>
+		</div>
+		<div id="tip-downM" class="message-box">
+			<span class="message-box-tip tip-down-bot"></span>
+			<span class="message-box-tip tip-down-top"></span> {{downData}}
+		</div>
+
+		<div id="tip-upM" class="message-box">
+			<span class="message-box-tip tip-up-bot"></span>
+			<span class="message-box-tip tip-up-top"></span> {{upData}}
+		</div>
+	</div>
+
+</div>

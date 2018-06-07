@@ -1,0 +1,72 @@
+<!--任务运维页面-->
+<div ng-controller="opmaintListCtrl" class="query-wrap">
+    <div class="tablist-details">
+        <div class="position-relative query-table">
+
+            <div class="tablist-bar">
+
+                <span>任务状态：</span>
+                <ui-select class="dialog-input mr10" ng-model="data.searchState" ng-change="getSelectState()">
+                    <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="item in stateData | filter: $select.search">
+                        <span ng-bind-html="item.name | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+
+                <div class="tablist-search">
+                    <div class="display-iblock hand-border input-padding input-h input-w input-search">
+                        <input class="hand-input" placeholder="请输入任务名称" ng-model="searchKey"
+                               fun-Keyboard="{method:'dataSearch'}" ng-keyup="myKeyup($event)"/>
+                        <fun-Icon id="msnui-find" ng-click="dataSearch()" class="search-icon"></fun-Icon>
+                    </div>
+                </div>
+
+
+
+                <div class="right_btn fr color-blue">
+                    <div class="cursor-pointer fr btn-border btn-delete color-blue ml10" ng-click="batchDelete()">
+                        <fun-Icon id="shanchu"></fun-Icon>
+                        <span>批量删除</span>
+                    </div>
+
+                </div>
+            </div>
+            <table ng-table="tableParams" class="table table-striped tablist operationTable">
+                <thead>
+                <tr>
+                    <th>
+							<span class="checkBox file-checkbox">
+								<input type="checkbox" class="input_check" id="ckAlOpList" ng-model="isSelectAll"
+                                       ng-click="selectAll(isSelectAll)"><label for="ckAlOpList"></label></span>
+                    </th>
+                    <th>任务名称</th>
+                    <th>渠道类型</th>
+                    <th>更新时间</th>
+                    <th>定时器</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in tabData">
+                    <td style="width: 80px;">
+                        <span class="checkBox file-checkbox"><input type="checkbox" class="input_check"
+                                                                    id="{{'check'+$index}}" ng-model="selected[$index]"><label
+                                for="{{'check'+$index}}"></label></span>
+                    </td>
+                    <td ng-bind="item.channelName"></td>
+                    <td ng-bind="item.channelType"></td>
+                    <td ng-bind="item.updateTime |date:'yyyy-MM-dd HH:mm:ss'" ng-if="item.updateTime!=undefined"></td>
+                    <td ng-bind="item.createTime |date:'yyyy-MM-dd HH:mm:ss'" ng-if="item.updateTime==undefined"></td>
+                    <td ng-model="row.timer"> </td>
+                    <td>
+
+                        <fun-Icon id="bianji" ng-click="editTable($index)"></fun-Icon>
+                        <fun-Icon id="del-round" ng-click="deleteTable(item)"></fun-Icon>
+                        <fun-Icon id="gengduo" ></fun-Icon>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

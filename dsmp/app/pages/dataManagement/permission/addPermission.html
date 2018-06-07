@@ -1,0 +1,92 @@
+<dialog-Template>
+	<div class="add-wrap">
+		<div class="mb10 acctNum">
+			<div class="dialog-text acctNumName"><span class="must-before">账号：</span></div>
+			<ui-select ng-model="permInfo.nameInfo" multiple class="dialog-input">
+				<ui-select-match placeholder="请选择">{{$item.userName}}</ui-select-match>
+				<ui-select-choices repeat="user in users | filter: $select.search">
+					<span ng-bind-html="user.userName | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+		</div>
+
+		<div class="mb10">
+			<div class="dialog-text"><span class="must-before">库名：</span></div>
+			<ui-select ng-model="selected.value" class="dialog-input" theme="bootstrap" on-select="changeHiveName(selected.value)">
+				<ui-select-match>{{$select.selected}}</ui-select-match>
+				<ui-select-choices repeat="item in hiveName">
+					<span ng-bind-html="item"></span>
+				</ui-select-choices>
+			</ui-select>
+		</div>
+		
+		<div class="mb10">
+			<div class="dialog-text"><span  class="must-before">访问表名：</span></div>
+			<ui-select ng-model="permInfo.hasPerTab" multiple class="dialog-input">
+				<ui-select-match placeholder="请选择">{{ $item }}</ui-select-match>
+				<ui-select-choices repeat="item in dataList track by $index">
+					<span ng-bind-html="item"></span>
+				</ui-select-choices>
+			</ui-select>
+			<p style="margin-left:-142px; font-size: 12px; color: red;">'*'代表所有表</p>
+		</div>
+
+		<!-- <div class="mb10" style="height: 200px;">
+			<div class="dialog-text  table-text"><span class="must-before">HIVE表名：</span>
+			</div>
+			<div class="left-panel">
+				<div class="left-panel-head">
+					访问列表
+				</div>
+				<ul class="nav">
+					<li ng-repeat="table in dataList"  class="cursor-pointer bgColor">
+						<span ng-click="changeEmployeeTag(table)" ng-show="table.flag==undefined || table.flag==0" title="{{ table.dataName }}">{{table.dataName | textLimit: 16}}</span>
+						<span class="perInfo-gray" ng-dblclick="changeEmployeeTag(table)" ng-show="table.flag==1" title="{{ table.dataName }}">{{table.dataName | textLimit: 16}}</span>
+					</li>
+				</ul>
+			</div>
+			<div class="right-panel">
+				<div class="right-panel-head">
+					已选择
+				</div>
+				<ul class="content_right">
+					<li ng-repeat="b in dataList" class="cursor-pointer bgColor" ng-show="b.flag==1">
+						<fun-Icon id="close" ng-click="changeEmployeeTag(b)" class="icon-left"></fun-Icon>
+						<span class="span_right" title="{{ b.dataName }}">{{b.dataName | textLimit: 10}} </span>
+					</li>
+				</ul>
+			</div>
+		</div> -->
+
+		<div class="mb10">
+			<div class="dialog-text">
+				<span class="must-before right151">权限：</span>
+			</div>
+			<div class="check-width">
+				<ul style="text-align: left;">
+					<li>
+						<input type="checkbox" ng-model="perCheck.all" ng-true-value="'all'" ng-click="changeCheckbox(perCheck.all)"> <span class="paadingall">所有(ALL)</span>
+					</li>
+					<li>
+						<input type="checkbox" ng-model="perCheck.alter" ng-true-value="'alter'" ng-click="changeCheckbox(perCheck.alter)"> <span class="paadingall">修改元数据(ALTER)</span>
+					</li>
+					<li>
+						<input type="checkbox" ng-model="perCheck.update" ng-true-value="'update'" ng-click="changeCheckbox(perCheck.update)"> <span class="paadingall">更新表数据(UPDATE)</span>
+					</li>
+					<li>
+						<input type="checkbox" ng-model="perCheck.create" ng-true-value="'create'" ng-click="changeCheckbox(perCheck.create)"> <span class="paadingall">创建表(CREATE)</span>
+					</li>
+					<li>
+						<input type="checkbox" ng-model="perCheck.drop" ng-true-value="'drop'" ng-click="changeCheckbox(perCheck.drop)"> <span class="paadingall">删除表(DROP)</span>
+					</li>
+					<li>
+						<input type="checkbox" ng-model="perCheck.index" ng-true-value="'index'" ng-click="changeCheckbox(perCheck.index)"> <span class="paadingall">建索引(INDEX)</span>
+					</li>
+					<li>
+						<input type="checkbox" ng-model="perCheck.select" ng-true-value="'select'" ng-click="changeCheckbox(perCheck.select)"> <span class="paadingall">查询表(SELECT)</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</dialog-Template>

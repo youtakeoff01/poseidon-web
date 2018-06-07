@@ -1,0 +1,116 @@
+<!--auth Zhangtingting_-->
+<!--date 2017年3月28日10:37:08-->
+<style>
+	.login-outlay {
+		width: 100%;
+		height: 100%;
+		background-image: url(assets/images/bg.jpg);
+		background-size: 100%;
+	}
+	
+	.login-logo {
+		position: absolute;
+		left: 25px;
+		top: 25px;
+	}
+	
+	.login-container {
+		width: 350px;
+		margin: 0 auto;
+		color: #FFFFFF;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+	}
+	
+	.login-text {
+		text-align: center;
+		font-size: 24px;
+	}
+	
+	.login-text img{
+		margin-bottom: 20px;
+	}
+	
+	.login-input {
+		margin-top: 20px;
+		margin-bottom: 30px;
+		width: 100%;
+		height: 50px;
+		border-radius: 6px;
+		padding: 10px;
+		background-color: rgba(255, 255, 255, 0.2);
+	}
+	
+	.login-input>.icon {
+		width: 30px;
+		height: 30px;
+		margin-right: 10px;
+	}
+	
+	.login-input input {
+		border: none;
+		outline: none;
+		background-color: transparent;
+		width: 150px;
+	}
+	
+	.login-input-label {
+		float: left;
+		height: 30px;
+		line-height: 30px;
+	}
+	
+	.login-btn {
+		width: 100%;
+		height: 50px;
+		background-color: #16B8BD;
+		border: none;
+		font-size: 20px;
+		margin-top: 30px;
+	}
+	
+	.login-fail-message {
+		margin-top: -10px;
+		margin-bottom: 10px;
+		color: red;
+	}
+</style>
+<div class="login-outlay" ng-controller="loginCtrl">
+	<div class="login-container">
+		<div class="login-text">
+			<img src="assets/images/logo.png" />
+		</div>
+		<div class="login-input">
+			<fun-Icon id="iconfont" style="float: left;"></fun-Icon>
+			<div class="login-input-label">
+				用户名&nbsp;:
+				<input ng-model="user.name" ng-keyup="myKeyup($event)" autocomplete="off"/>
+			</div>
+		</div>
+		<div class="login-input">
+			<fun-Icon id="mima" style="float: left;"></fun-Icon>
+			<div class="login-input-label">
+				密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;:
+				<input type="password" ng-model="user.password" ng-keyup="myKeyup($event)" autocomplete="off"/>
+			</div>
+		</div>
+		<div class="login-fail-message">
+			<span  ng-show="loginFailed == true">{{loginFailMessage}}</span>
+		</div>
+		<div style="display: inline-block;margin-right: 10px;">
+			<label class="i-checks">
+				<input type="checkbox" ng-true-value="true" ng-false-value="false" ng-model="isldapuser"><i></i>
+			</label>
+			<span class="fz-18">XJTLU AD Account</span>
+		</div>
+		<!-- <div style="display: inline-block; float: right">
+			<label class="i-checks">
+				<input type="checkbox" ng-true-value="true" ng-false-value="false" ng-model="isRemember"><i></i>
+			</label>
+			<span class="fz-18">记住用户</span>
+		</div> -->
+		<button class="btn login-btn" ng-click="login()">登录</button>
+	</div>
+</div>

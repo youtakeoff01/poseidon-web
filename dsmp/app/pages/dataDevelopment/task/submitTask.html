@@ -1,0 +1,48 @@
+<!--提交任务-->
+<div ng-controller="submitTaskCtrl" class="query-wrap">
+	<div class="tablist-details">
+		<div class="position-relative query-table">
+			<div class="tablist-bar">
+				<div class="cursor-pointer fl btn-border btn-add" ng-click="addTask()">
+					<fun-Icon id="xinzeng1" ></fun-Icon>
+					<span>上传</span>
+				</div>
+				<div class="right_btn fr color-blue">
+					<div class="cursor-pointer fr btn-border btn-delete color-blue ml10" ng-click="batchDelete()">
+						<fun-Icon id="shanchu"></fun-Icon>
+						<span>批量删除</span>
+					</div>
+				</div>
+			</div>
+			<table ng-table="tableParams" class="table table-striped tablist">
+				<thead>
+					<tr>
+						<th style="width: 4%;">
+							<span class="checkBox file-checkbox"><input type="checkbox" class="input_check" id="ckAllPerQy" ng-model="isSelectAll" ng-click="selectAll(isSelectAll)"><label for="ckAllPerQy"></label></span>
+						</th>
+						<th style="width: 4%;">id</th>
+						<th style="width: 25%;">名称</th>
+						<th style="width: 16%;">更新者</th>
+						<th style="width: 20%;">更新时间</th>
+						<th style="width: 8%;">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in taskData">
+						<td  ng-model="item.name">
+							<span class="checkBox file-checkbox"><input type="checkbox" class="input_check" id="{{'check'+item.id}}" ng-model="selected[item.id]"><label for="{{'check'+item.id}}"></label></span>
+						</td>
+						<td ng-bind="item.id"></td>
+						<td ng-bind="item.jarName"></td>
+						<td ng-bind="item.updateUser"></td>
+						<td ng-bind="item.updateTime | date:'yyyy-MM-dd HH:mm:ss'"></td>
+						<td>
+							<fun-icon-title title="配置属性"  id="shezhi1" ng-click="editTask(item)" ></fun-icon-title>&nbsp;&nbsp;
+							<fun-icon-title title="删除"  id="del-round" ng-click="deleteTask(item)"></fun-icon-title>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

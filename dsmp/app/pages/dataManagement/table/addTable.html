@@ -1,0 +1,146 @@
+<dialog-Template>
+	<div class="add-wrap">
+		<!-- 目前不做 -->
+		<!-- <div class="mb15">
+			<div class="dialog-text ">
+				<span class="must-before">元数据类型：</span></div>
+			<ui-select class="dialog-input" ng-model="addTabInfo.metaDataType" ng-change="selectQuery()">
+				<ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+				<ui-select-choices repeat="item in selectData | filter: $select.search">
+					<span ng-bind-html="item.name | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+		</div> -->
+
+       <!--  <div class="mb15">
+            <div class="dialog-text ">
+                <span class="must-before">库名：</span></div>
+            <ui-select class="dialog-input" ng-model="addTabInfo.dbName">
+                <ui-select-match placeholder="请选择">{{$select.selected.dName}}</ui-select-match>
+                <ui-select-choices repeat="item in dbNameData | filter: $select.search">
+                    <span ng-bind-html="item.dName | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div> -->
+
+		<div class="mb15">
+			<div class="dialog-text"><span class="must-before">表名：</span></div>
+			<ng-form name="tableNameForm">
+				<input class="form-control dialog-input"
+					name="tableName" 
+					ng-model="addTabInfo.tabelName"
+					ng-pattern="/^[a-zA-Z][\w]*$/" 
+					required/>
+					<p ng-show="tableNameForm.$invalid && tableNameForm.$dirty" style="margin-left:10px; font-size: 12px; color: red;">请输入大小写数字下划线且以字母开头</p>
+			</ng-form>
+		</div>
+	
+		<div class="mb15">
+			<div class="dialog-text ziduan position-relative">
+				<span class="must-before" >字段：</span>
+			</div>
+			<table st-table st-safe-src="milestoneData" class="table-bordered table-small" ng-if="addTabInfo.metaDataType.name!='hbase'">
+				<thead>
+					<tr class="tr-width">
+						<th st-sort="fieldName">字段名</th>
+						<th st-sort="fieldType">数据类型</th>
+						<th st-sort="flag">分区字段</th>
+						<th st-sort="fieldDescribe">描述</th>
+						<th st-sort="">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="row in addTableField">
+						<!-- 字段名必填 -->
+						<td>
+							<div class="input-group">
+								<ng-form name="fieldNameForm">
+									<input class="form-control" type="text" 
+										ng-model="row.fieldName"
+										ng-pattern="/^[a-zA-Z][\w]*$/"
+										required/>
+								</ng-form>
+							</div>
+						</td>
+						<!-- 字段类型 -->
+						<td>
+							<div class="input-group">
+								<ui-select class="dialog-input-small" ng-model="row.fieldType">
+									<ui-select-match placeholder="请选择">
+										{{ $select.selected }}
+									</ui-select-match>
+									<ui-select-choices repeat="item in tabFieldType | filter: $select.search">
+										<span ng-bind-html="item | highlight: $select.search"></span>
+									</ui-select-choices>
+								</ui-select>
+							</div>
+						</td>
+						<!-- 0分区 1不分区 -->
+						<td>
+							<div class="input-group" style="width: 100%;">
+								<label class="i-checks">
+									<input type="checkbox" 
+										ng-true-value="0" 
+										ng-false-value="1" 
+										ng-model="row.flag"
+										ng-change="rowFlag(row.flag)"><i></i>
+								</label>
+							</div>
+						</td>
+						<!-- 描述 非必填项 -->
+						<td>
+							<div class="input-group">
+								<input ng-model="row.fieldDescribe" class="form-control" required>
+							</div>
+						</td>
+						<td>
+							<fun-Icon id="close" ng-click="removeItem(row.id)"></fun-Icon>
+						</td>
+					</tr>
+					<p ng-show="fieldNameForm.$invalid && fieldNameForm.$dirty" style="margin-left:10px; font-size: 12px; color: red;">请输入大小写数字下划线且以字母开头</p>
+				</tbody>
+			</table>
+	
+			<div class="cursor-pointer btn-new add-row" ng-click="addProRow()">
+				<fun-Icon id="xinzeng1" class="color-blue"></fun-Icon>
+				<span>添加行</span>
+			</div>
+		</div>
+
+		<div class="mb15 clear" style="margin-left: 175px">
+			<!-- 是否默认分区 是 为0  不是为1 -->
+			<div class="fl">
+				<input type="checkbox" ng-true-value="0" ng-false-value="1" 
+					ng-model="addTabInfo.defaultPar" 
+					id="defaultPar"
+					ng-disabled="defaultPar">
+				<label for="defaultPar">是否默认分区</label>
+			</div>
+			<!-- 0内部表   1外部表 -->
+			<div class="fl" style="margin-left: 98px">
+				<input type="checkbox" ng-true-value="1" ng-false-value="0" 
+					ng-model="addTabInfo.isLocation" 
+					ng-change="isLocaChange(addTabInfo.isLocation)"
+					id="isLocation">
+				<label for="isLocation">是否为外部表</label>
+			</div>
+		</div> 
+
+		<div class="mb15" ng-show="externalDis">
+			<div class="dialog-text"><span class="must-before">外部表目录：</span></div>
+			<ng-form name="locationForm">
+				<input class="form-control dialog-input"
+					name="locationName" 
+					ng-model="addTabInfo.location"
+					required/>
+			</ng-form>
+		</div>
+
+		<div class="mb20">
+			<div class="dialog-text "><span>描述信息：</span></div>
+			<textarea class="form-control dialog-textarea" 
+				ng-model="addTabInfo.metaDesc">
+			</textarea>
+		</div> 
+	</div>
+</dialog-Template>

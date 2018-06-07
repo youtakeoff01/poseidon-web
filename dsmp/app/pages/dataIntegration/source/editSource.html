@@ -1,0 +1,51 @@
+<dialog-Template>
+	<div class="add-wrap">
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">数据源名称：</span></div>
+			<input class="form-control dialog-input" ng-model="editSourceData.srcName" disabled="false" />
+		</div>
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">数据库类型：</span></div>
+
+			<ui-select class="dialog-input" ng-model="editSourceData.dbTypeEdit" ng-disabled="afterTestSucceed">
+				<ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
+				<ui-select-choices repeat="item in selectData | filter: $select.search">
+					<span ng-bind-html="item.name | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+			
+		</div>
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">用户名：</span></div>
+			<input class="form-control dialog-input" ng-model="editSourceData.dbUser" ng-disabled="afterTestSucceed"/>
+		</div>
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">数据库密码：</span></div>
+			<input class="form-control dialog-input" type="password" ng-model="editSourceData.dbPwd" ng-disabled="afterTestSucceed"/>
+		</div>
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">数据库名称：</span></div>
+			<input class="form-control dialog-input" ng-model="editSourceData.dbName" ng-disabled="afterTestSucceed"/>
+		</div>
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">URL：</span></div>
+			<input class="form-control dialog-input" ng-model="editSourceData.dbUrl" placeholder="127.0.0.1:3306" ng-disabled="afterTestSucceed"/>
+		</div>
+		<div class="mb10">
+			<div class="dialog-text "><span class="must-before">连通性状态：</span></div>
+
+			<a ng-click="getConStatus(editSourceData)" class="span_pointer">连接测试</a>
+			<!--<fun-Icon id="duihao" ng-click=""ng-if="data.no==1"></fun-Icon>&nbsp;&nbsp;-->
+			<fun-Icon id="guanbi" ng-if="editStatus==0">
+                <fun-Icon id="duihao" ng-if="editStatus==1"></fun-Icon>&nbsp;&nbsp;
+
+		</div>
+
+		<div class="mb10" ng-if="editStatus==0">
+			<font color="red">连接测试不成功</font>
+		</div>
+		<div class="mb10" ng-if="editStatus==1">
+			<font color="green">连接测试成功</font>
+		</div>
+	</div>
+	</dialog-Tempate>

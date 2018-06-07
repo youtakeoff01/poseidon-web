@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>POSEIDON</title>
+<!--		<base href="/">-->
+		<link rel="icon" href="assets/images/logotitle.png" type="image/x-icon">
+		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js" ></script>
+		<script type="text/javascript" src="bower_components/angular/angular.js" ></script>
+		<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js" ></script>
+		<script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js" ></script>
+		<!-- <script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script> -->
+		<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.min.js" ></script>
+
+		<script type="text/javascript" src="assets/fonts/iconfont.js"></script>
+		<script type="text/javascript" src="assets/svg/d3.js"></script>
+		<script type="text/javascript" src="assets/timedate/jedate.js"></script>
+
+		<!--base64-->
+		<script src="bower_components/angular-base64/angular-base64.js"></script>
+		<!--base64-->
+		
+		<!--ui-select-->
+		<script type="text/javascript" src="bower_components/angular-ui-select/dist/select.min.js" ></script>
+		<link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.min.css" />
+		<!--ui-select-->
+
+		<!--loading-bar-->
+		<script type="text/javascript" src="bower_components/angular-loading-bar/src/loading-bar.js" ></script>
+		<link rel="stylesheet" href="bower_components/angular-loading-bar/src/loading-bar.css" />
+	   	<!--loading-bar-->
+	   	
+		<!--ng-table-->
+		<script type="text/javascript" src="bower_components/ng-table/dist/ng-table.min.js" ></script>
+		<link rel="stylesheet" href="bower_components/ng-table/dist/ng-table.min.css" />
+		<!--ng-table-->
+		
+		<!--bootstrap-->
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+		<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+		<!--bootstrap-->
+		
+		<!--echarts-->
+		<script type="text/javascript" src="bower_components/echarts/dist/echarts.min.js" ></script>
+		<script type="text/javascript" src="bower_components/echarts/map/js/china.js" ></script>
+		<!--echarts-->
+
+		<!--ngDialog-->
+		<link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog.min.css">
+		<!--<link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog-theme-plain.min.css">-->
+		<link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog-theme-default.min.css">
+		<script type="text/javascript" src="bower_components/ng-dialog/js/ngDialog.min.js"></script>
+		<!--ngDialog-->
+        
+		<script src="bower_components/angular-wizard/dist/angular-wizard.min.js"></script>
+		<link rel="stylesheet" href="bower_components/angular-wizard/dist/angular-wizard.min.css">
+			
+		<!--angular-breadcrumb-->
+		<script type="text/javascript" src="bower_components/angular-breadcrumb/dist/angular-breadcrumb.min.js"></script>
+		<!--angular-breadcrumb-->
+		
+		<!--angular-toastr-->
+		<link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.min.css" />
+		<script type="text/javascript" src="bower_components/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+		<!--angular-toastr-->
+
+		<link rel="stylesheet" href="app/css/master.css">
+		<script type="text/javascript" src="app/config/app.js" ></script>
+		<script type="text/javascript" src="app/config/config.js" ></script>
+		<script type="text/javascript" src="app/config/router.js" ></script>
+		<script type="text/javascript" src="app/config/tools.js" ></script>
+		<script type="text/javascript" src="app/config/constant.js" ></script>
+		<script type="text/javascript" src="app/config/file.js" ></script>
+		<script type="text/javascript" src="app/config/scocket.io.js"></script>
+		<!--网图编辑器-->
+		<script type="text/javascript" src="app/config/flowChartIndex.js"></script>
+		<!--网图编辑器-->
+		<!-- inject:js -->
+  		
+  		<script src="app/pages/console/opmaintEchartCtrl.js"></script>
+  		
+  		<script src="app/pages/console/opmaintListCtrl.js"></script>
+  		
+  		<script src="app/pages/layout/headerCtrl.js"></script>
+  		
+  		<script src="app/pages/layout/menu.ctrl.js"></script>
+  		
+  		<script src="app/pages/layout/updatePsdCtrl.js"></script>
+  		
+  		<script src="app/pages/layout/wrapCtrl.js"></script>
+  		
+  		<script src="app/pages/dataDevelopment/search/dataSaveCtrl.js"></script>
+  		
+  		<script src="app/pages/dataDevelopment/search/dataSearchCtrl.js"></script>
+  		
+  		<script src="app/pages/dataDevelopment/task/addTaskCtrl.js"></script>
+  		
+  		<script src="app/pages/dataDevelopment/task/editTaskCtrl.js"></script>
+  		
+  		<script src="app/pages/dataDevelopment/task/submitTaskCtrl.js"></script>
+  		
+  		<script src="app/pages/dataIntegration/file/addDirectoryCtrl.js"></script>
+  		
+  		<script src="app/pages/dataIntegration/file/file.ctrl.js"></script>
+  		
+  		<script src="app/pages/dataIntegration/file/moveFileCtrl.js"></script>
+  		
+  		<script src="app/pages/dataIntegration/file/RenameFile.js"></script>
+  		
+  		<script src="app/pages/dataIntegration/source/addSourceCtrl.js"></script>
+  		
+  		<script src="app/pages/dataIntegration/source/editSourceCtrl.js"></script>
+  		
+  		<script src="app/pages/dataIntegration/source/sourceCtrl.js"></script>
+  		
+  		<script src="app/pages/dataIntegration/sync/syncCtrl.js"></script>
+  		
+  		<script src="app/pages/dataIntegration/sync/syncStepFourCtrl.js"></script>
+  		
+  		<script src="app/pages/dataIntegration/sync/syncStepOneCtrl.js"></script>
+  		
+  		<script src="app/pages/dataIntegration/sync/syncStepThreeCtrl.js"></script>
+  		
+  		<script src="app/pages/dataIntegration/sync/syncStepTwoCtrl.js"></script>
+  		
+  		<script src="app/pages/dataIntegration/sync/syncTimeStepCtrl.js"></script>
+  		
+  		<script src="app/pages/identity/login/login.ctrl.js"></script>
+  		
+  		<script src="app/pages/dataManagement/table/addLibrayCtrl.js"></script>
+  		
+  		<script src="app/pages/dataManagement/table/addTableCtrl.js"></script>
+  		
+  		<script src="app/pages/dataManagement/table/editTableCtrl.js"></script>
+  		
+  		<script src="app/pages/dataManagement/table/tableCtrl.js"></script>
+  		
+  		<script src="app/pages/dataManagement/table/tbInfor.js"></script>
+  		
+  		<script src="app/pages/dataManagement/permission/addPermissionCtrl.js"></script>
+  		
+  		<script src="app/pages/dataManagement/permission/editPermissionCtrl.js"></script>
+  		
+  		<script src="app/pages/dataManagement/permission/permissionCtrl.js"></script>
+  		
+  		<script src="app/pages/dataManagement/tableDetail/tbDetailInfor.js"></script>
+  		
+  		<script src="app/pages/machineLearning/machine/echartNetCtrl.js"></script>
+  		
+  		<script src="app/pages/machineLearning/machine/editNetCtrl.js"></script>
+  		
+  		<script src="app/pages/machineLearning/machine/machineLearningCtrl.js"></script>
+  		
+  		<script src="app/pages/machineLearning/machine/machineLogCtrl.js"></script>
+  		
+  		<script src="app/pages/machineLearning/machine/netLogCtrl.js"></script>
+  		
+  		<script src="app/pages/machineLearning/machine/openMachineCtrl.js"></script>
+  		
+  		<script src="app/pages/machineLearning/machine/saveMachineCtrl.js"></script>
+  		
+  		<script src="app/pages/metadata/query/queryCtrl.js"></script>
+  		
+  		<script src="app/pages/myData/query/dataQueryCtrl.js"></script>
+  		
+  		<script src="app/pages/myData/history/dataHistoryCtrl.js"></script>
+  		
+  		<script src="app/pages/platformManage/log/logCtrl.js"></script>
+  		
+  		<script src="app/pages/platformManage/processManage/addapplyCtrl.js"></script>
+  		
+  		<script src="app/pages/platformManage/processManage/myapplyCtrl.js"></script>
+  		
+  		<script src="app/pages/platformManage/processManage/myapprovalCtrl.js"></script>
+  		
+  		<script src="app/pages/platformManage/sysSet/sysSetCtrl.js"></script>
+  		
+  		<script src="app/pages/platformManage/userGroup/addGroupUserCtrl.js"></script>
+  		
+  		<script src="app/pages/platformManage/userGroup/editGroupUserCtrl.js"></script>
+  		
+  		<script src="app/pages/platformManage/userGroup/userGroupCtrl.js"></script>
+  		
+  		<script src="app/pages/platformManage/userManage/addUserCtrl.js"></script>
+  		
+  		<script src="app/pages/platformManage/userManage/editUserCtrl.js"></script>
+  		
+  		<script src="app/pages/platformManage/userManage/userManageCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/custom/addCustomCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/custom/customWarmCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/custom/editCustomCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/ditch/addDtichCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/ditch/ditchWarnCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/ditch/editDitchCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operCase/completedStateCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operCase/inServiceCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operCase/operLogCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operCase/opmaintCaseCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/ruleManage/addRuleMana.js"></script>
+  		
+  		<script src="app/pages/operationCenter/ruleManage/editRuleMana.js"></script>
+  		
+  		<script src="app/pages/operationCenter/ruleManage/ruleManageCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operManage/checkMachineCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operManage/cusParaConfig.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operManage/dataExecuteCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operManage/editMachineNetCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operManage/editTaskInfo.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operManage/editTimerCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operManage/machineDetailCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operManage/machineExectLogCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operManage/machineManageCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operManage/opmanageCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operManage/opmanageHistoryCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operManage/partitionTime.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operManage/scriptFileCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operManage/syncTaskCtrl.js"></script>
+  		
+  		<script src="app/pages/operationCenter/operManage/taskInfoCtrl.js"></script>
+  		
+  		<!-- endinject -->
+	</head>
+	<body>
+		<div class="main-view" ui-view></div>
+	</body>
+</html>
